@@ -76,7 +76,7 @@ model.compile(loss=keras.losses.categorical_crossentropy,
 
 
 model.compile(loss=keras.losses.categorical_crossentropy,
-              optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False),
+              optimizer=Adam(lr=lr_rate, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False),
               metrics=['accuracy'])
 
 ## Training & fit
