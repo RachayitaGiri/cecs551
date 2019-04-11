@@ -18,15 +18,17 @@ from scipy.io import loadmat
 from keras.optimizers import RMSprop, Adam
 from keras.optimizers import SGD
 import matplotlib.pyplot as plt
-from keras.models import Sequential
-from keras.layers import Dense, Activation, Flatten, Convolution1D, Dropout
-from keras.optimizers import SGD
+from keras.layers import Activation
 from keras.utils import np_utils
 
 
 ## MyCode 
 
 ## Import Images
+
+
+
+
 
 ## Params
 classes= 91
@@ -36,7 +38,6 @@ epochs= 5
 input_shape= 224, 224, 3
 
 ## model
-
 
 
 model = Sequential()
