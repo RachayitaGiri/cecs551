@@ -13,8 +13,6 @@ import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
-from keras import backend as K
-from scipy.io import loadmat
 from keras.optimizers import RMSprop, Adam
 from keras.optimizers import SGD
 import matplotlib.pyplot as plt
