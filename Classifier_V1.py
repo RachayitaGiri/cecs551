@@ -44,7 +44,7 @@ totalCount = 0
 fineCount = 0
 corruptCount = 0
 
-print(np.size(allPictures))
+print(len(image_list))
 
 ## Params
 classes= 91
