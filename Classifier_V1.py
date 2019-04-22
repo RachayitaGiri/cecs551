@@ -34,7 +34,8 @@ import progressbar as pb
 ## Import Images
 image_list=[]
 
-allPictures = glob.glob('/home/datasets/train2014/*.jpeg')
+allPictures = glob.glob('/home/datasets/%s/*.jpg' % sys.argv[1])
+##allPictures = glob.glob('/home/datasets/train2014/*.jpeg')
 
 for file in allPictures:
     im= Image.open(file)
