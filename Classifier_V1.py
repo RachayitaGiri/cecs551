@@ -10,7 +10,7 @@ Created on Wed Apr 10 16:08:06 2019
 # COCO Dataset spring 2019
 # Last Updated 4/10/2019
 
-
+import numpy as np
 import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
@@ -38,8 +38,8 @@ totalCount = 0
 fineCount = 0
 corruptCount = 0
 
+print(np.size(allpictures))
 
-'''
 ## Params
 classes= 91
 power= random.uniform(-6,-2)
@@ -77,7 +77,7 @@ model.add(Dropout(0.25))
 model.add(Dense(classes, activation='softmax'))
 model.summary()
 
-
+'''
 ### Try optimizers
 
 model.compile(loss=keras.losses.categorical_crossentropy,
@@ -127,6 +127,4 @@ def plot_loss_accuracy(history):
     
 
 plot_loss_accuracy(history)
-
-
-## Test
+'''
