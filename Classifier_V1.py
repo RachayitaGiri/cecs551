@@ -1,4 +1,5 @@
 from __future__ import print_function
+
 # -*- coding: utf-8 -*-
 """
 Created on Wed Apr 10 16:08:06 2019
@@ -9,7 +10,7 @@ Created on Wed Apr 10 16:08:06 2019
 # COCO Dataset spring 2019
 # Last Updated 4/10/2019
 
-import jason
+
 import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
@@ -19,19 +20,30 @@ from keras.optimizers import SGD
 import matplotlib.pyplot as plt
 from keras.layers import Activation
 from keras.utils import np_utils
+import random
+
+import glob
+import os, sys
+import PIL
+from PIL import Image
+import progressbar as pb
 
 
 ## MyCode 
 
 ## Import Images
 
+allPictures = glob.glob('/home/datasets/train2014/%s/*.jpg' % sys.argv[1])
+totalCount = 0
+fineCount = 0
+corruptCount = 0
 
 
-
-
+'''
 ## Params
 classes= 91
-lr_rate= 0.001
+power= random.uniform(-6,-2)
+lr_rate= 10 ** power
 batch_size= 128
 epochs= 5
 input_shape= 224, 224, 3
@@ -40,10 +52,11 @@ input_shape= 224, 224, 3
 
 
 model = Sequential()
-model.add(Conv2D(32, kernel_size=(3, 3), stride= (1,1) ,padding= 'same', activation='relu', input_shape=input_shape))
+model.add(Conv2D(32, kernel_size=(3, 3), strides= 1 ,padding= 'same', activation='relu', input_shape=input_shape))
 model.add(Dropout(0.4))
 
 model.add(MaxPooling2D(pool_size=(2, 2)))
+
 
 model.add(Conv2D(64, kernel_size=(3, 3), activation='relu'))
 model.add(Dropout(0.4))
@@ -75,9 +88,8 @@ model.compile(loss=keras.losses.categorical_crossentropy,
               optimizer=SGD(lr=lr_rate, momentum=0.9),
               metrics=['accuracy'])
 
-
 model.compile(loss=keras.losses.categorical_crossentropy,
-              optimizer=Adam(lr=lr_rate, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False),
+              optimizer=Adam(lr=lr_rate, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0001, amsgrad=False),
               metrics=['accuracy'])
 
 ## Training & fit
