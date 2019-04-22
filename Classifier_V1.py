@@ -8,7 +8,7 @@ Created on Wed Apr 10 16:08:06 2019
 """
 ## ImageClassification
 # COCO Dataset spring 2019
-# Last Updated 4/10/2019
+# Last Updated 4/22/2019
 
 import numpy as np
 import keras
@@ -42,12 +42,10 @@ for file in allPictures:
     image_list.append(im)
     
     
-totalCount = 0
-fineCount = 0
-corruptCount = 0
 
-print(len(image_list))
-'''
+
+print('Image list length is :' , len(image_list))
+
 ## Params
 classes= 91
 power= random.uniform(-6,-2)
@@ -55,6 +53,7 @@ lr_rate= 10 ** power
 batch_size= 128
 epochs= 5
 input_shape= 224, 224, 3
+print('Lr rate is :', lr_rate)
 
 ## model
 
@@ -85,7 +84,7 @@ model.add(Dropout(0.25))
 model.add(Dense(classes, activation='softmax'))
 model.summary()
 
-
+'''
 ### Try optimizers
 
 model.compile(loss=keras.losses.categorical_crossentropy,
@@ -133,6 +132,7 @@ def plot_loss_accuracy(history):
     ax.set_title('accuracy')
     ax.grid(True)
     
+
 
 plot_loss_accuracy(history)
 '''
