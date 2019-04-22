@@ -35,6 +35,7 @@ import progressbar as pb
 image_list=[]
 
 allPictures = glob.glob('.../home/datasets/train2014/%s/*.jpg' % sys.argv[0])
+
 for file in allPictures:
     im= Image.open(file)
     image_list.append(im)
@@ -45,7 +46,7 @@ fineCount = 0
 corruptCount = 0
 
 print(len(image_list))
-
+'''
 ## Params
 classes= 91
 power= random.uniform(-6,-2)
@@ -83,7 +84,7 @@ model.add(Dropout(0.25))
 model.add(Dense(classes, activation='softmax'))
 model.summary()
 
-'''
+
 ### Try optimizers
 
 model.compile(loss=keras.losses.categorical_crossentropy,
