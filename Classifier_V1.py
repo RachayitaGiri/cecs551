@@ -33,12 +33,12 @@ import progressbar as pb
 
 ## Import Images
 
-allPictures = glob.glob('/home/datasets/train2014/%s/*.jpg' % sys.argv[1])
+allPictures = glob.glob('.../home/datasets/train2014/%s/*.jpg' % sys.argv[1])
 totalCount = 0
 fineCount = 0
 corruptCount = 0
 
-print(np.size(allpictures))
+print(np.size(allPictures))
 
 ## Params
 classes= 91
