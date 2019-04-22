@@ -130,5 +130,3 @@ plot_loss_accuracy(history)
 
 
 ## Test
-
-## Visualization
