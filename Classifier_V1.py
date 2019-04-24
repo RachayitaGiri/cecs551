@@ -38,8 +38,8 @@ allPictures = glob.glob('/home/datasets/%s/*.jpg' % sys.argv[1])
 ##allPictures = glob.glob('/home/datasets/train2014/*.jpeg')
 
 for file in allPictures:
-    im= Image.open(file)
-    image_list.append(im)
+    im= file.load_data()
+    image_list.append(file)
     
     
 
