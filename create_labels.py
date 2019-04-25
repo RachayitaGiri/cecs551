@@ -7,8 +7,8 @@ Created on Wed Apr 24 17:48:44 2019
 @author: surface
 """
 
-def create_labels(jason_file):
-    with open(jason_file, 'r') as COCO:
+def create_labels(json_file):
+    with open(json_file, 'r') as COCO:
                     js= json.loads(COCO.read())
                     image_labels=np.zeros([len(js['images']),92])
                     for i in range(len(js['images'])):
