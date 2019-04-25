@@ -80,7 +80,7 @@ model.add(Dropout(0.4))
 model.add(Flatten())
 model.add(Dense(batch_size, activation='relu'))
 model.add(Dropout(0.25))
-model.add(Dense(classes, activation='softmax'))
+model.add(Dense(classes, activation='sigmoid'))
 model.summary()
 
 '''
