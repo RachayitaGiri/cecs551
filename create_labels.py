@@ -12,13 +12,10 @@ def create_labels(json_file):
         js= json.loads(COCO.read())
         image_labels=np.zeros([len(js['images']),92])
         for i in range(len(js['images'])):
-            if i < 100:
-                image_labels[i,0]=js['images'][i]['id']
-                for anot in js['annotations']:
-                    if anot['image_id']==js['images'][i]['id']:
-                        image_labels[i,anot['category_id']]=1
-            else:
-                break
+            image_labels[i,0]=js['images'][i]['id']
+            for anot in js['annotations']:
+                if anot['image_id']==js['images'][i]['id']:
+                    image_labels[i,anot['category_id']]=1
     
     np.savetxt("val_labels.csv", image_labels, delimiter=",")
 
