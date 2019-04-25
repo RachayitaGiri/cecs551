@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 from __future__ import print_function
 
 # -*- coding: utf-8 -*-
@@ -134,6 +135,8 @@ plot_loss_accuracy(history)
 
 ## Visualization
 =======
+=======
+>>>>>>> d06833788f88918c5842a5f808d5cc86cb981466
 from __future__ import print_function
 
 # -*- coding: utf-8 -*-
@@ -160,8 +163,12 @@ import random
 
 import glob
 import os, sys
+<<<<<<< HEAD
 import PIL
 from PIL import Image
+=======
+
+>>>>>>> d06833788f88918c5842a5f808d5cc86cb981466
 import progressbar as pb
 
 
@@ -174,8 +181,13 @@ allPictures = glob.glob('/home/datasets/%s/*.jpg' % sys.argv[1])
 ##allPictures = glob.glob('/home/datasets/train2014/*.jpeg')
 
 for file in allPictures:
+<<<<<<< HEAD
     im= Image.open(file)
     image_list.append(im)
+=======
+    im= file.load_data()
+    image_list.append(file)
+>>>>>>> d06833788f88918c5842a5f808d5cc86cb981466
     
     
 
@@ -217,7 +229,11 @@ model.add(Dropout(0.4))
 model.add(Flatten())
 model.add(Dense(batch_size, activation='relu'))
 model.add(Dropout(0.25))
+<<<<<<< HEAD
 model.add(Dense(classes, activation='softmax'))
+=======
+model.add(Dense(classes, activation='sigmoid'))
+>>>>>>> d06833788f88918c5842a5f808d5cc86cb981466
 model.summary()
 
 '''
@@ -271,5 +287,9 @@ def plot_loss_accuracy(history):
 
 
 plot_loss_accuracy(history)
+<<<<<<< HEAD
 '''
 >>>>>>> 736ab30c18a52390178a1d1ee5dbccbdbe29c442
+=======
+'''
+>>>>>>> d06833788f88918c5842a5f808d5cc86cb981466
