@@ -17,7 +17,6 @@ def create_labels(json_file):
                 if anot['image_id']==js['images'][i]['id']:
                     image_labels[i,anot['category_id']]=1
     
-    with open('val_labels.csv', 'w') as outfile:
-        outfile.write(image_labels)
+    np.savetxt("val_labels.csv", a, delimiter=",")
 
 create_labels('instances_val2014.json')
