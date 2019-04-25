@@ -24,8 +24,7 @@ import random
 
 import glob
 import os, sys
-import PIL
-from PIL import Image
+
 import progressbar as pb
 
 
