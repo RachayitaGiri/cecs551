@@ -28,22 +28,30 @@ import os, sys
 import progressbar as pb
 from numpy import genfromtxt
 
+
+## MyCode 
+
+## Import labesl
 labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
 
 print(labels[0,1])
 print(type(labels[0]))
 
-## MyCode 
 
-## Import Images
-'''
-with open('/home/datasets/annotations/train_labels.csv' ) as csvfile:
-    labels= csv.reader(csvfile, delimiter= ',')
-    #for i in labels:
-     #   print(i)
-      #  print(type(i))
-'''        
 print(type(labels))
+
+##import images
+
+Image_ids= labels[:,0]
+N,d= np.shape(Image_ids)
+print(N)
+print(d)
+'''
+images= np.zeros(224,224,3, N)
+for i in range(N):
+    images(:,:,:,i)= ### image with image_id== Image_ids[i]
+'''    
+    
 '''
 image_list=[]
 
