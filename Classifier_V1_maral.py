@@ -53,7 +53,7 @@ with open(json_file, 'r') as COCO:
 image_names= np.zeros(N)
 for i in range(N):
     for j in range(len(js['images'])):
-        if labels[i,]== js['images'][j]['id']:
+        if labels[i,0]== js['images'][j]['id']:
             image_names[i]= js['images'][j]['file_name']
             
 print(image_names[N])            
