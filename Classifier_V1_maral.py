@@ -50,11 +50,12 @@ json_file='/home/datasets/annotations/instances_train2014.json'
 with open(json_file, 'r') as COCO:
     js= json.loads(COCO.read())
 
-image_names= []
+image_names= [None]*N
 for i in range(N):
     for j in range(len(js['images'])):
         if labels[i,0]== js['images'][j]['id']:
             image_names[i]= js['images'][j]['file_name']
+            print(i)
             
 print(image_names[N])            
 
