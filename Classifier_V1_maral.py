@@ -43,7 +43,7 @@ print(type(labels))
 ##import images
 
 Image_ids= labels[:,0]
-N= np.shape(Image_ids)
+N= np.shape(Image_ids)[0]
 print(N)
 #############
 json_file='/home/datasets/annotations/instances_train2014.json'
