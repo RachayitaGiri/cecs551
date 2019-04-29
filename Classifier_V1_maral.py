@@ -30,6 +30,9 @@ from numpy import genfromtxt
 
 labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
 
+print(labels[0,1])
+print(type(labels[0]))
+
 ## MyCode 
 
 ## Import Images
