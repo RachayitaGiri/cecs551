@@ -6,3 +6,5 @@ AI Class Project - Image Classification/Object Detection
 - Training data: 82,783 images
 - Test data: 40,775 images
 - Validation data: 40,504 images
+
+- this is easy
