@@ -9,7 +9,7 @@ Created on Wed Apr 10 16:08:06 2019
 ## ImageClassification
 # COCO Dataset spring 2019
 # Last Updated 4/22/2019
-
+import csv
 import numpy as np
 import keras
 from keras.models import Sequential
@@ -31,6 +31,12 @@ import progressbar as pb
 ## MyCode 
 
 ## Import Images
+
+with open('train_labels.csb' ) as csvfile:
+    labels= csv.reader(csvfile, delimiter= ',')
+    
+print(type(labels))
+'''
 image_list=[]
 
 allPictures = glob.glob('/home/datasets/%s/*.jpg' % sys.argv[1])
@@ -44,6 +50,7 @@ for file in allPictures:
 
 
 print('Image list length is :' , len(image_list))
+'''
 
 ## Params
 classes= 91
