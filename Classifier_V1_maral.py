@@ -32,7 +32,7 @@ import progressbar as pb
 
 ## Import Images
 
-with open('./home/datasets/annotations/train_labels.csv' ) as csvfile:
+with open('/home/datasets/annotations/train_labels.csv' ) as csvfile:
     labels= csv.reader(csvfile, delimiter= ',')
     
 print(type(labels))
