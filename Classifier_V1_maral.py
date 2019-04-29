@@ -43,9 +43,9 @@ print(type(labels))
 ##import images
 
 Image_ids= labels[:,0]
-N,d= np.shape(Image_ids)
+N= np.shape(Image_ids)
 print(N)
-print(d)
+
 '''
 images= np.zeros(224,224,3, N)
 for i in range(N):
