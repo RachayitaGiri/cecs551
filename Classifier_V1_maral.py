@@ -26,18 +26,20 @@ import glob
 import os, sys
 
 import progressbar as pb
+from numpy import genfromtxt
 
+labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
 
 ## MyCode 
 
 ## Import Images
-
+'''
 with open('/home/datasets/annotations/train_labels.csv' ) as csvfile:
     labels= csv.reader(csvfile, delimiter= ',')
     #for i in labels:
      #   print(i)
       #  print(type(i))
-        
+'''        
 print(type(labels))
 '''
 image_list=[]
