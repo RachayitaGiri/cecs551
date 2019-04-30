@@ -36,7 +36,7 @@ def loadtraindata():
     
     #Image_ids= labels[:,0]
     #N= np.shape(Image_ids)[0]
-    N=5
+    N=1
     
     json_file='/home/datasets/annotations/instances_train2014.json'
     with open(json_file, 'r') as COCO:
@@ -49,7 +49,7 @@ def loadtraindata():
                 
     images= np.full((3,N,224,224),0)            
     for i in range(N):
-        images[:,i,:,:]= image.imread('/home/datasets/%s/',image_names[i])
+        images[:,i,:,:]= image.imread('/home/datasets/%s/',image_names[i]  % sys.argv[1])
     
     X_train= images
     
