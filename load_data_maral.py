@@ -35,8 +35,8 @@ def loadtraindata():
     labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
     y_train= labels[:,1:]
     
-    Image_ids= labels[:,0]
-    N= np.shape(Image_ids)[0]
+    
+    N= np.shape(labels)[0]
     
     
     json_file='/home/datasets/annotations/instances_train2014.json'
