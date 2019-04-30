@@ -31,7 +31,7 @@ def loadtraindata():
     json_file='/home/datasets/annotations/instances_train2014.json'
     with open(json_file, 'r') as COCO:
         js= json.loads(COCO.read())
-    N=2    
+     
     image_names= [None]*N
     for i in range(N):
         for j in range(len(js['images'])):
@@ -47,7 +47,7 @@ def loadtraindata():
     
     return X_train, y_train
         
-'''
+
 
 def loadvaldata():
     labels=genfromtxt('/home/datasets/annotations/val_labels.csv',delimiter=',')
@@ -55,7 +55,7 @@ def loadvaldata():
     
     
     N= np.shape(labels)[0]
-    
+    print(N)
     
     json_file='/home/datasets/annotations/instances_val2014.json'
     with open(json_file, 'r') as COCO:
@@ -73,26 +73,26 @@ def loadvaldata():
     
     X_val= images
     
-    return X_val, y_val      
-'''
+    return X_val, y_val     
+ 
+
 X_train, y_train= loadtraindata()
 
-
+np.save("train_dataX", X_train)
+np.save("train_datay", y_train)
 
 print(type(X_train) , 'is type and the shape of the train images is:', np.shape(y_train))
 print(type(y_train), 'is type and the shape of the train labels is:' ,np.shape(X_train))
-'''
+
+
 X_val, y_val= loadvaldata()
+
+np.save("val_datay", y_val)
+np.save("val_dataX", X_val)
 
 print(type(X_val) , 'is type and the shape of the val images is:', np.shape(y_val))
 print(type(y_val), 'is type and the shape of the val labels is:' ,np.shape(X_val))
 
 
-'''
-'''
-np.save("train_dataX", X_train)
-np.save("train_datay", y_train)
-np.save("val_datay", y_val)
-np.save("val_dataX", X_val)
-''' 
+
     
