@@ -47,9 +47,9 @@ def loadtraindata():
             if labels[i,0]== js['images'][j]['id']:
                 image_names[i]= js['images'][j]['file_name']
                 
-    images= np.zeros(224,224,3,N)            
+    images= np.full((3,N,224,224),0)            
     for i in range(N):
-        images[:,:,:,i]= image.imread('/home/datasets/%s/',image_names[i])
+        images[:,i,:,:]= image.imread('/home/datasets/%s/',image_names[i])
     
     X_train= images
     
