@@ -32,11 +32,11 @@ import json
 
 ## Import labesl
 
-y_train= genfromtxt('train_datay.csv.npy', delimiter= ',')
-X_train= genfromtxt('train_dataX.csv.npy', delimiter= ',')
+y_train= np.load('train_datay.csv.npy')
+X_train= np.load('train_dataX.csv.npy')
 
-
-
+print(np.shape(y_train))
+print(np.shape(X_train))
 ## Params
 classes= 91
 
