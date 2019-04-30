@@ -49,7 +49,7 @@ def loadtraindata():
                 image_names[i]= js['images'][j]['file_name']
                 
     images= np.full((224,224,3,N),0)            
-    for i in range(N):
+    for i in range(3):
         name=image_names[i]
         images[:,:,:,i]= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[1], name) )
     
@@ -60,7 +60,12 @@ def loadtraindata():
         
 
 X_train, y_train= loadtraindata()
+
+print(type(X_train) , 'is type and the shape of the images is:', np.shape(y_train))
+print(type(y_train), 'is type and the shape of the labels is:' ,np.shape(X_train))
+
+'''
 np.save("train_dataX", X_train)
 np.save("train_datay", y_train)
-    
+''' 
     

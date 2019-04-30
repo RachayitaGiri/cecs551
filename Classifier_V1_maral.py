@@ -35,8 +35,10 @@ import json
 y_train= np.load('train_datay.csv.npy')
 X_train= np.load('train_dataX.csv.npy')
 
-print(np.shape(y_train))
-print(np.shape(X_train))
+
+
+print(type(X_train) , 'is type and the shape of the images is:', np.shape(y_train))
+print(type(y_train), 'is type and the shape of the labels is:' ,np.shape(X_train))
 ## Params
 classes= 91
 
