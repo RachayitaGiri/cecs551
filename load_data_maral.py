@@ -28,9 +28,6 @@ import progressbar as pb
 from numpy import genfromtxt
 import json
 
-X_train, y_train= loadtraindata()
-np.savetxt("train_dataX.csv", X_train, delimiter= ",")
-np.savetxt("train_datay.csv", y_train, delimiter= ",")
 
 
 def loadtraindata():
@@ -60,5 +57,8 @@ def loadtraindata():
         
         
 
+X_train, y_train= loadtraindata()
+np.savetxt("train_dataX.csv", X_train, delimiter= ",")
+np.savetxt("train_datay.csv", y_train, delimiter= ",")
     
     
