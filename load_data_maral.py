@@ -27,6 +27,7 @@ import os, sys
 import progressbar as pb
 from numpy import genfromtxt
 import json
+import matplotlib.image as mpimg
 
 
 
@@ -49,7 +50,8 @@ def loadtraindata():
                 
     images= np.full((3,N,224,224),0)            
     for i in range(N):
-        images[:,i,:,:]= image.imread('/home/datasets/%s/',image_names[i]  % sys.argv[1])
+        name=image_names[i]
+        images[:,i,:,:]= mpimg.imread('/home/datasets/%s/name'  % sys.argv[1])
     
     X_train= images
     
