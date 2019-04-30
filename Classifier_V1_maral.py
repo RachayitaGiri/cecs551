@@ -32,8 +32,8 @@ import json
 
 ## Import labesl
 
-y_train=genfromtxt('train_datay.csv', delimiter= ',')
-X_train= genfromtxt('train_dataX.csv', delimiter= ',')
+y_train= genfromtxt('train_datay.csv.npy', delimiter= ',')
+X_train= genfromtxt('train_dataX.csv.npy', delimiter= ',')
 
 
 
