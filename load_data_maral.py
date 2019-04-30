@@ -20,7 +20,7 @@ import matplotlib.image as mpimg
 
 
 def loadtraindata():
-    labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
+    labels=genfromtxt('/home/stephlopez915/datasets/annotations/train_labels.csv',delimiter=',')
     y_train= labels[:,1:]
     
     
@@ -28,7 +28,7 @@ def loadtraindata():
     
     print(N)
     
-    json_file='/home/datasets/annotations/instances_train2014.json'
+    json_file='/home/stephlopez915/datasets/annotations/instances_train2014.json'
     with open(json_file, 'r') as COCO:
         js= json.loads(COCO.read())
      
