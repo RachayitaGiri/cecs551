@@ -9,6 +9,7 @@ Created on Wed Apr 10 16:08:06 2019
 ## ImageClassification
 # COCO Dataset spring 2019
 # Last Updated 4/22/2019
+from PIL import image
 import csv
 import numpy as np
 import keras
@@ -55,48 +56,26 @@ for i in range(N):
     for j in range(len(js['images'])):
         if labels[i,0]== js['images'][j]['id']:
             image_names[i]= js['images'][j]['file_name']
-            print(i)
+            
             
 print(image_names[N])            
 
 allPictures = glob.glob('/home/datasets/%s/*.jpg' % sys.argv[1])
 
-images= np.zeros[224,224,3,N]
-
+images= np.zeros[N, 224*224*3]
 '''
-for ii in range(N):
-    images[:,:,:,ii]= /home/datasets/train2014
-    
+for jj in range(N):
+    images(jj,:)= np.reshape(image.imread(allPictures.image_names[jj]),[1,224*224*3])
 
-'''
-
-
-
-    
-'''
-image_list=[]
-
-allPictures = glob.glob('/home/datasets/%s/*.jpg' % sys.argv[1])
-##allPictures = glob.glob('/home/datasets/train2014/*.jpeg')
-
-for file in allPictures:
-    im= file.load_data()
-    image_list.append(file)
-    
-    
-
-
-print('Image list length is :' , len(image_list))
 '''
 
 ## Params
 classes= 91
-power= random.uniform(-6,-2)
-lr_rate= 10 ** power
+
 batch_size= 128
 epochs= 5
 input_shape= 224, 224, 3
-print('Lr rate is :', lr_rate)
+
 
 ## model
 
@@ -129,16 +108,15 @@ model.summary()
 
 '''
 ### Try optimizers
+power= random.uniform(-6,-2)
+lr_rate= 10 ** power
+print('Lr rate is :', lr_rate)
 
-model.compile(loss=keras.losses.categorical_crossentropy,
-              optimizer=RMSprop(lr=lr_rate),
-              metrics=['accuracy'])
+beta1= random.uniform(0.85, 0.95)
+beta2= random.uniform(0.95, 0,9999)
+decay= 10 ** random.uniform(-6,-2)
 
-model.compile(loss=keras.losses.categorical_crossentropy,
-              optimizer=SGD(lr=lr_rate, momentum=0.9),
-              metrics=['accuracy'])
-
-model.compile(loss=keras.losses.categorical_crossentropy,
+model.compile(loss=keras.losses.binary_crossentropy,
               optimizer=Adam(lr=lr_rate, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0001, amsgrad=False),
               metrics=['accuracy'])
 
