@@ -57,7 +57,7 @@ def loadvaldata():
     N= np.shape(labels)[0]
     print(N)
     
-    json_file='/home/stephlopes915/datasets/annotations/instances_val2014.json'
+    json_file='/home/stephlopez915/datasets/annotations/instances_val2014.json'
     with open(json_file, 'r') as COCO:
         js= json.loads(COCO.read())
     image_names= [None]*N
