@@ -51,7 +51,7 @@ def loadtraindata():
     images= np.full((224,224,3,N),0)            
     for i in range(N):
         name=image_names[i]
-        images[:,:,:,i]= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[0], name) )
+        images[:,:,:,i]= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[1], name) )
     
     X_train= images
     
