@@ -26,6 +26,7 @@ def loadtraindata():
     
     N= np.shape(labels)[0]
     
+    print(N)
     
     json_file='/home/datasets/annotations/instances_train2014.json'
     with open(json_file, 'r') as COCO:
@@ -38,7 +39,7 @@ def loadtraindata():
                 image_names[i]= js['images'][j]['file_name']
                 
     images= np.full((224,224,3,N),0)            
-    for i in range(3):
+    for i in range(N):
         name=image_names[i]
         images[:,:,:,i]= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[1], name) )
     
