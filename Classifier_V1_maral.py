@@ -31,41 +31,11 @@ import json
 ## MyCode 
 
 ## Import labesl
-labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
 
-print(labels[0,1])
-print(type(labels[0]))
+y_train=genfromtxt('train_datay.csv', delimiter= ',')
+X_train= genfromtxt('train_dataX.csv', delimiter= ',')
 
 
-print(type(labels))
-
-##import images
-
-Image_ids= labels[:,0]
-N= np.shape(Image_ids)[0]
-print(N)
-#############
-json_file='/home/datasets/annotations/instances_train2014.json'
-with open(json_file, 'r') as COCO:
-    js= json.loads(COCO.read())
-
-image_names= [None]*N
-for i in range(N):
-    for j in range(len(js['images'])):
-        if labels[i,0]== js['images'][j]['id']:
-            image_names[i]= js['images'][j]['file_name']
-            
-            
-print(image_names[N])            
-
-allPictures = glob.glob('/home/datasets/%s/*.jpg' % sys.argv[1])
-
-images= np.zeros[N, 224*224*3]
-'''
-for jj in range(N):
-    images(jj,:)= np.reshape(image.imread(allPictures.image_names[jj]),[1,224*224*3])
-
-'''
 
 ## Params
 classes= 91
