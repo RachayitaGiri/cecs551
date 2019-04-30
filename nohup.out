@@ -1,0 +1,101 @@
+Traceback (most recent call last):
+  File "load_data_maral.py", line 79, in <module>
+    X_train, y_train= loadtraindata()
+  File "load_data_maral.py", line 23, in loadtraindata
+    labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/npyio.py", line 1744, in genfromtxt
+    fhd = iter(np.lib._datasource.open(fname, 'rt', encoding=encoding))
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 266, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 624, in open
+    raise IOError("%s not found." % path)
+OSError: /home/datasets/annotations/train_labels.csv not found.
+Traceback (most recent call last):
+  File "load_data_maral.py", line 79, in <module>
+    X_train, y_train= loadtraindata()
+  File "load_data_maral.py", line 23, in loadtraindata
+    labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/npyio.py", line 1744, in genfromtxt
+    fhd = iter(np.lib._datasource.open(fname, 'rt', encoding=encoding))
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 266, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 624, in open
+    raise IOError("%s not found." % path)
+OSError: /home/datasets/annotations/train_labels.csv not found.
+Traceback (most recent call last):
+  File "load_data_maral.py", line 79, in <module>
+    X_train, y_train= loadtraindata()
+  File "load_data_maral.py", line 23, in loadtraindata
+    labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/npyio.py", line 1744, in genfromtxt
+    fhd = iter(np.lib._datasource.open(fname, 'rt', encoding=encoding))
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 266, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 624, in open
+    raise IOError("%s not found." % path)
+OSError: /home/datasets/annotations/train_labels.csv not found.
+Traceback (most recent call last):
+  File "load_data_maral.py", line 79, in <module>
+    X_train, y_train= loadtraindata()
+  File "load_data_maral.py", line 23, in loadtraindata
+    labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/npyio.py", line 1744, in genfromtxt
+    fhd = iter(np.lib._datasource.open(fname, 'rt', encoding=encoding))
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 266, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 624, in open
+    raise IOError("%s not found." % path)
+OSError: /home/datasets/annotations/train_labels.csv not found.
+Traceback (most recent call last):
+  File "load_data_maral.py", line 79, in <module>
+    X_train, y_train= loadtraindata()
+  File "load_data_maral.py", line 23, in loadtraindata
+    labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/npyio.py", line 1744, in genfromtxt
+    fhd = iter(np.lib._datasource.open(fname, 'rt', encoding=encoding))
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 266, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 624, in open
+    raise IOError("%s not found." % path)
+OSError: /home/datasets/annotations/train_labels.csv not found.
+Traceback (most recent call last):
+  File "load_data_maral.py", line 79, in <module>
+    X_train, y_train= loadtraindata()
+  File "load_data_maral.py", line 23, in loadtraindata
+    labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/npyio.py", line 1744, in genfromtxt
+    fhd = iter(np.lib._datasource.open(fname, 'rt', encoding=encoding))
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 266, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 624, in open
+    raise IOError("%s not found." % path)
+OSError: /home/datasets/annotations/train_labels.csv not found.
+Traceback (most recent call last):
+  File "load_data_maral.py", line 79, in <module>
+    X_train, y_train= loadtraindata()
+  File "load_data_maral.py", line 23, in loadtraindata
+    labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/npyio.py", line 1744, in genfromtxt
+    fhd = iter(np.lib._datasource.open(fname, 'rt', encoding=encoding))
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 266, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 624, in open
+    raise IOError("%s not found." % path)
+OSError: /home/datasets/annotations/train_labels.csv not found.
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "Classifier_V1_maral.py", line 27, in <module>
+    import progressbar as pb
+ImportError: No module named 'progressbar'
+Traceback (most recent call last):
+  File "load_data_maral.py", line 79, in <module>
+    X_train, y_train= loadtraindata()
+  File "load_data_maral.py", line 23, in loadtraindata
+    labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/npyio.py", line 1744, in genfromtxt
+    fhd = iter(np.lib._datasource.open(fname, 'rt', encoding=encoding))
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 266, in open
+    return ds.open(path, mode, encoding=encoding, newline=newline)
+  File "/usr/local/lib/python3.5/dist-packages/numpy/lib/_datasource.py", line 624, in open
+    raise IOError("%s not found." % path)
+OSError: /home/datasets/annotations/train_labels.csv not found.
