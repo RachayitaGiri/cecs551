@@ -22,10 +22,8 @@ import matplotlib.pyplot as plt
 from keras.layers import Activation
 from keras.utils import np_utils
 import random
-
 import glob
 import os, sys
-
 import progressbar as pb
 from numpy import genfromtxt
 import json
