@@ -9,26 +9,18 @@ Created on Wed Apr 10 16:08:06 2019
 ## ImageClassification
 # COCO Dataset spring 2019
 # Last Updated 4/22/2019
-from matplotlib import image
 import matplotlib
 
-import csv
 import numpy as np
 import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D, MaxPooling2D
-from keras.optimizers import RMSprop, Adam
-from keras.optimizers import SGD
+from keras.optimizers import Adam
 import matplotlib.pyplot as plt
 from keras.layers import Activation
 from keras.utils import np_utils
 import random
-import glob
-import os, sys
-import progressbar as pb
-from numpy import genfromtxt
-import json
 from sklearn.metrics import f1_score
 import tensorflow as tf
 ## MyCode 
