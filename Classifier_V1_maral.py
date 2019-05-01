@@ -113,10 +113,11 @@ for i in range(1):
     pred = model.predict(X_val)
     pred[pred >= 0.5]=1
     pred[pred<0.5]=0
-    pred = tf.convert_to_tensor(pred, np.float32)
+    
     
     score= f1_score(y_val, pred, average= 'samples')
     print('Test accuracy:', score)
+    pred = tf.convert_to_tensor(pred, np.float32)
     loss =keras.losses.binary_crossentropy(y_val, pred)
     print('Test loss:', loss)
     
