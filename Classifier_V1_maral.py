@@ -32,13 +32,22 @@ import json
 
 ## Import labesl
 
-y_train= np.load('train_datay.npy')
-X_train= np.load('train_dataX.npy')
+y_train1= np.load('train_datay.npy')
+X_train1= np.load('train_dataX.npy')
 
 
 
-print(type(X_train) , 'is type and the shape of the images is:', np.shape(y_train))
-print(type(y_train), 'is type and the shape of the labels is:' ,np.shape(X_train))
+print(type(X_train1) , 'is type and the shape of the images is:', np.shape(X_train1))
+print(type(y_train1), 'is type and the shape of the labels is:' ,np.shape(y_train1))
+
+
+y_train= y_train1[0:4000,:]
+y_val= y_train1[4000:5000,:]
+
+X_train=X_train1[:,:,:,0:4000]
+X_val= X_train1[:,:,:,4000:]
+
+
 ## Params
 classes= 91
 
