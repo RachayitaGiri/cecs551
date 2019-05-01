@@ -108,11 +108,12 @@ for i in range(1):
           epochs=epochs,
           verbose=1,
           validation_data=(X_val, y_val))
+    
     pred = model.predict(X_val)
     pred[pred >= 0.5]=1
     pred[pred<0.5]=0
     
-    score= sklearn.metrics.f1_score(y_val, pred)
+    score= f1_score(y_val, pred)
     loss =keras.losses.binary_crossentropy(y_val, pred)
     
     print('Test loss:', loss)
