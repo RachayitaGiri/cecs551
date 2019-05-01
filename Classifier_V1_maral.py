@@ -44,8 +44,8 @@ print(type(y_train1), 'is type and the shape of the labels is:' ,np.shape(y_trai
 y_train= y_train1[0:4000,:]
 y_val= y_train1[4000:5000,:]
 
-X_train=X_train1[:,:,:,0:4000]
-X_val= X_train1[:,:,:,4000:]
+X_train=np.transpose(X_train1[:,:,:,0:4000])
+X_val= np.transpose(X_train1[:,:,:,4000:])
 
 
 ## Params
@@ -53,7 +53,7 @@ classes= 91
 
 batch_size= 128
 epochs= 5
-input_shape= 224, 224, 3
+input_shape= 3,224,224
 
 
 ## model
