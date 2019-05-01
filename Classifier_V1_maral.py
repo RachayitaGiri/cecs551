@@ -113,7 +113,7 @@ for i in range(1):
     pred[pred >= 0.5]=1
     pred[pred<0.5]=0
     
-    score= f1_score(y_val, pred)
+    score= f1_score(y_val, pred, average= 'samples')
     loss =keras.losses.binary_crossentropy(y_val, pred)
     
     print('Test loss:', loss)
