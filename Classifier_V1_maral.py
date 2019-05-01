@@ -27,7 +27,7 @@ import os, sys
 import progressbar as pb
 from numpy import genfromtxt
 import json
-import sklearn
+from sklearn.metrics import f1_score
 ## MyCode 
 
 ## Import labesl
@@ -53,7 +53,7 @@ print(type(y_train), 'is type and the shape of the labels is:' ,np.shape(y_train
 classes= 91
 
 batch_size= 128
-epochs= 5
+epochs= 1
 input_shape= 224,224,3
 
 
@@ -95,7 +95,8 @@ decay= 10 ** random.uniform(-6,-2)
 '''
 for i in range(1):
     power= random.uniform(-6,-2)
-    lr_rate= 10 ** power
+    lr_rate= 0.01
+    #lr_rate= 10 ** power
     print('Lr rate is :', lr_rate)
     
     model.compile(loss=keras.losses.binary_crossentropy,
@@ -111,7 +112,7 @@ for i in range(1):
     pred[pred >= 0.5]=1
     pred[pred<0.5]=0
     
-    score= sklearn.metrics.f1_score(y_val, pred,)
+    score= sklearn.metrics.f1_score(y_val, pred)
     loss =keras.losses.binary_crossentropy(y_val, pred)
     
     print('Test loss:', loss)
