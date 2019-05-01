@@ -68,9 +68,9 @@ def loadvaldata():
         for j in range(len(js['images'])):
             if labels[i,0]== js['images'][j]['id']:
                 image_names[i]= js['images'][j]['file_name']
-                
+    N=20000            
     images= np.full([224,224,3,N],0, dtype= int)            
-    for i in range(3):
+    for i in range(N):
         name=image_names[i]
         images[:,:,:,i]= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[2], name) )
         print(i)
