@@ -43,7 +43,12 @@ def loadtraindata():
     for i in range(N):
         print(i)
         name=image_names[i]
-        images[:,:,:,i]= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[1], name) )
+        
+        ax= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[1], name) )
+        if ax.shape== (224,224,3):
+            images[:,:,:,i]= ax
+
+
     
     X_train= images
     
