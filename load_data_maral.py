@@ -70,7 +70,7 @@ def loadvaldata():
     for i in range(3):
         name=image_names[i]
         images[:,:,:,i]= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[2], name) )
-    
+        print(i)
     X_val= images
     
     return X_val, y_val     
