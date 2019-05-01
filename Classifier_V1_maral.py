@@ -11,7 +11,7 @@ Created on Wed Apr 10 16:08:06 2019
 # Last Updated 4/22/2019
 from matplotlib import image
 import matplotlib
-matplotlib.use('GTK')
+
 import csv
 import numpy as np
 import keras
@@ -127,6 +127,7 @@ for i in range(3):
 
 
 def plot_loss_accuracy(history):
+    matplotlib.use('GTK')
     fig = plt.figure(figsize=(12, 6))
     ax = fig.add_subplot(1, 2, 1)
     ax.plot(history.history["loss"],'r-x', label="Train Loss")
