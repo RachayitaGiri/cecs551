@@ -54,7 +54,7 @@ classes= 91
 
 batch_size= 128
 epochs= 5
-input_shape= 3,224,224
+input_shape= 224,224,3
 
 
 ## model
