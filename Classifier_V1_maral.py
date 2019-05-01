@@ -27,7 +27,7 @@ import os, sys
 import progressbar as pb
 from numpy import genfromtxt
 import json
-
+import sklearn
 ## MyCode 
 
 ## Import labesl
@@ -107,10 +107,16 @@ for i in range(1):
           epochs=epochs,
           verbose=1,
           validation_data=(X_val, y_val))
-    score = model.evaluate(X_val, y_val, verbose=1)
-    print('Test loss:', score[0])
-    print('Test accuracy:', score[1])
-
+    pred = model.predict(X_val)
+    pred[pred >= 0.5]=1
+    pred[pred<0.5]=0
+    
+    score= sklearn.metrics.f1_score(y_val, pred,)
+    loss =keras.losses.binary_crossentropy(y_val, pred)
+    
+    print('Test loss:', loss)
+    print('Test accuracy:', score)
+'''
 
 def plot_loss_accuracy(history):
     fig = plt.figure(figsize=(12, 6))
@@ -132,3 +138,4 @@ def plot_loss_accuracy(history):
 
 
 plot_loss_accuracy(history)
+'''
