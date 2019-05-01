@@ -1,9 +1,0 @@
-Using TensorFlow backend.
-Traceback (most recent call last):
-  File "load_data_maral.py", line 62, in <module>
-    X_train, y_train= loadtraindata()
-  File "load_data_maral.py", line 51, in loadtraindata
-    images= np.full((224,224,3,N),0)            
-  File "/usr/local/lib/python3.5/dist-packages/numpy/core/numeric.py", line 335, in full
-    a = empty(shape, dtype, order)
-MemoryError
