@@ -32,8 +32,8 @@ import json
 
 ## Import labesl
 
-y_train= np.load('train_datay.csv.npy')
-X_train= np.load('train_dataX.csv.npy')
+y_train= np.load('train_datay.npy')
+X_train= np.load('train_dataX.npy')
 
 
 
@@ -76,36 +76,32 @@ model.add(Dropout(0.25))
 model.add(Dense(classes, activation='sigmoid'))
 model.summary()
 
-'''
-### Try optimizers
-power= random.uniform(-6,-2)
-lr_rate= 10 ** power
-print('Lr rate is :', lr_rate)
 
+### Try optimizers
+'''
 beta1= random.uniform(0.85, 0.95)
 beta2= random.uniform(0.95, 0,9999)
 decay= 10 ** random.uniform(-6,-2)
-
-model.compile(loss=keras.losses.binary_crossentropy,
+'''
+for i in range(10):
+    power= random.uniform(-6,-2)
+    lr_rate= 10 ** power
+    print('Lr rate is :', lr_rate)
+    
+    model.compile(loss=keras.losses.binary_crossentropy,
               optimizer=Adam(lr=lr_rate, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0001, amsgrad=False),
               metrics=['accuracy'])
-
-## Training & fit
-history= model.fit(x_train, y_train,
+    ## Training & fit
+    istory= model.fit(X_train, y_train,
           batch_size=batch_size,
           epochs=epochs,
           verbose=1,
-          validation_data=(x_test, y_test))
+          validation_data=(X_val, y_val))
+    score = model.evaluate(X_val, y_val, verbose=1)
+    print('Test loss:', score[0])
+    print('Test accuracy:', score[1])
 
 
-
-
-score = model.evaluate(x_test, y_test, verbose=1)
-
-print('Test loss:', score[0])
-print('Test accuracy:', score[1])
-
- 
 def plot_loss_accuracy(history):
     fig = plt.figure(figsize=(12, 6))
     ax = fig.add_subplot(1, 2, 1)
@@ -126,4 +122,3 @@ def plot_loss_accuracy(history):
 
 
 plot_loss_accuracy(history)
-'''

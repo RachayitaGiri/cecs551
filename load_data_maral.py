@@ -24,7 +24,7 @@ def loadtraindata():
     y_train= labels[:,1:]
     
     
-    N= np.shape(labels)[0]
+    N= 5000
     
     print(N)
     
@@ -68,6 +68,7 @@ def loadvaldata():
         for j in range(len(js['images'])):
             if labels[i,0]== js['images'][j]['id']:
                 image_names[i]= js['images'][j]['file_name']
+    
     N=20000            
     images= np.full([224,224,3,N],0, dtype= int)            
     for i in range(N):
@@ -78,7 +79,7 @@ def loadvaldata():
     
     return X_val, y_val     
  
-'''
+
 X_train, y_train= loadtraindata()
 
 np.save("train_dataX", X_train)
@@ -97,3 +98,4 @@ print(type(X_val) , 'is type and the shape of the val images is:', np.shape(y_va
 print(type(y_val), 'is type and the shape of the val labels is:' ,np.shape(X_val))
 
 
+'''
