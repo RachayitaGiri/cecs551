@@ -93,7 +93,7 @@ beta1= random.uniform(0.85, 0.95)
 beta2= random.uniform(0.95, 0,9999)
 decay= 10 ** random.uniform(-6,-2)
 '''
-for i in range(10):
+for i in range(1):
     power= random.uniform(-6,-2)
     lr_rate= 10 ** power
     print('Lr rate is :', lr_rate)
@@ -102,7 +102,7 @@ for i in range(10):
               optimizer=Adam(lr=lr_rate, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0001, amsgrad=False),
               metrics=['accuracy'])
     ## Training & fit
-    istory= model.fit(X_train, y_train,
+    history= model.fit(X_train, y_train,
           batch_size=batch_size,
           epochs=epochs,
           verbose=1,

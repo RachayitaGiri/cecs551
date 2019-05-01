@@ -22,10 +22,7 @@ import matplotlib.image as mpimg
 def loadtraindata():
     labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
     y_train= labels[:,1:]
-    
-    
-    N= 5000
-    
+    N= np.shape(labels)[0]
     print(N)
     
     json_file='/home/datasets/annotations/instances_train2014.json'
@@ -74,7 +71,7 @@ def loadvaldata():
             if labels[i,0]== js['images'][j]['id']:
                 image_names[i]= js['images'][j]['file_name']
     
-    N=20000            
+           
     images= np.full([224,224,3,N],0, dtype= int)            
     for i in range(N):
         name=image_names[i]
