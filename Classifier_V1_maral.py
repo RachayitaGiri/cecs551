@@ -10,6 +10,8 @@ Created on Wed Apr 10 16:08:06 2019
 # COCO Dataset spring 2019
 # Last Updated 4/22/2019
 from matplotlib import image
+import matplotlib
+matplotlib.use('GTK')
 import csv
 import numpy as np
 import keras
@@ -54,7 +56,7 @@ print(type(y_train), 'is type and the shape of the labels is:' ,np.shape(y_train
 classes= 91
 
 batch_size= 128
-epochs= 10
+epochs= 1
 input_shape= 224,224,3
 
 
@@ -122,13 +124,14 @@ for i in range(3):
     print('Test loss:', loss)
     
     
-'''
+
 
 def plot_loss_accuracy(history):
     fig = plt.figure(figsize=(12, 6))
     ax = fig.add_subplot(1, 2, 1)
     ax.plot(history.history["loss"],'r-x', label="Train Loss")
     ax.plot(history.history["val_loss"],'b-x', label="Validation Loss")
+
     ax.legend()
     ax.set_title('cross_entropy loss')
     ax.grid(True)
@@ -140,8 +143,8 @@ def plot_loss_accuracy(history):
     ax.legend()
     ax.set_title('accuracy')
     ax.grid(True)
+    matplotlib.pylot.savfig("ax.png")
     
 
 
 plot_loss_accuracy(history)
-'''
