@@ -54,7 +54,7 @@ print(type(y_train), 'is type and the shape of the labels is:' ,np.shape(y_train
 classes= 91
 
 batch_size= 128
-epochs= 1
+epochs= 10
 input_shape= 224,224,3
 
 
@@ -94,10 +94,10 @@ beta1= random.uniform(0.85, 0.95)
 beta2= random.uniform(0.95, 0,9999)
 decay= 10 ** random.uniform(-6,-2)
 '''
-for i in range(1):
-    power= random.uniform(-6,-2)
-    lr_rate= 0.01
-    #lr_rate= 10 ** power
+for i in range(3):
+    k= random.uniform(1,9)
+    
+    lr_rate= k* 10 ** (-4)
     print('Lr rate is :', lr_rate)
     
     model.compile(loss=keras.losses.binary_crossentropy,
