@@ -83,7 +83,7 @@ np.save("train_datay", y_train)
 
 print(type(X_train) , 'is type and the shape of the train images is:', np.shape(y_train))
 print(type(y_train), 'is type and the shape of the train labels is:' ,np.shape(X_train))
-
+'''
 
 X_val, y_val= loadvaldata()
 
@@ -94,5 +94,5 @@ print(type(X_val) , 'is type and the shape of the val images is:', np.shape(y_va
 print(type(y_val), 'is type and the shape of the val labels is:' ,np.shape(X_val))
 
 
-
+'''
     
