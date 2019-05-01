@@ -22,6 +22,7 @@ import matplotlib.image as mpimg
 def loadtraindata():
     labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
     y_train= labels[:,1:]
+    
     N= np.shape(labels)[0]
     print(N)
     
@@ -75,7 +76,9 @@ def loadvaldata():
     images= np.full([224,224,3,N],0, dtype= int)            
     for i in range(N):
         name=image_names[i]
-        images[:,:,:,i]= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[2], name) )
+        ax= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[2], name) )
+        if ax.shape== (224,224,3):
+            images[:,:,:,i]= ax
         print(i)
     X_val= images
     
