@@ -37,16 +37,17 @@ X_train1= np.load('train_dataX.npy')
 
 
 
-print(type(X_train1) , 'is type and the shape of the images is:', np.shape(X_train1))
-print(type(y_train1), 'is type and the shape of the labels is:' ,np.shape(y_train1))
 
 
 y_train= y_train1[0:4000,:]
 y_val= y_train1[4000:5000,:]
 
-X_train=np.transpose(X_train1[:,:,:,0:4000])
-X_val= np.transpose(X_train1[:,:,:,4000:])
+X_train=np.reshape(X_train1[:,:,:,0:4000], [4000,224,224,3])
+X_val= np.reshape(X_train1[:,:,:,4000:], [1000,224,224,3])
 
+
+print(type(X_train) , 'is type and the shape of the images is:', np.shape(X_train))
+print(type(y_train), 'is type and the shape of the labels is:' ,np.shape(y_train))
 
 ## Params
 classes= 91
@@ -66,7 +67,7 @@ model.add(Dropout(0.4))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 
-model.add(Conv2D(64, kernel_size=(3, 3), activation='relu'))
+model.add(Conv2D(32, kernel_size=(3, 3), activation='relu'))
 model.add(Dropout(0.4))
 
 model.add(MaxPooling2D(pool_size=(2, 2)))
