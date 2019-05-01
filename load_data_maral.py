@@ -20,7 +20,7 @@ import matplotlib.image as mpimg
 
 
 def loadtraindata():
-    labels=genfromtxt('/home/stephlopez915/datasets/annotations/train_labels.csv',delimiter=',')
+    labels=genfromtxt('/home/datasets/annotations/train_labels.csv',delimiter=',')
     y_train= labels[:,1:]
     
     
@@ -28,7 +28,7 @@ def loadtraindata():
     
     print(N)
     
-    json_file='/home/stephlopez915/datasets/annotations/instances_train2014.json'
+    json_file='/home/datasets/annotations/instances_train2014.json'
     with open(json_file, 'r') as COCO:
         js= json.loads(COCO.read())
      
@@ -41,7 +41,7 @@ def loadtraindata():
     images= np.full((224,224,3,N),0)            
     for i in range(N):
         name=image_names[i]
-        images[:,:,:,i]= mpimg.imread('/home/stephlopez915/datasets/%s/%s'  % (sys.argv[1], name) )
+        images[:,:,:,i]= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[1], name) )
     
     X_train= images
     
@@ -50,14 +50,14 @@ def loadtraindata():
 
 
 def loadvaldata():
-    labels=genfromtxt('/home/stephlopez915/datasets/annotations/val_labels.csv',delimiter=',')
+    labels=genfromtxt('/home/datasets/annotations/val_labels.csv',delimiter=',')
     y_val= labels[:,1:]
     
     
     N= np.shape(labels)[0]
     print(N)
     
-    json_file='/home/stephlopez915/datasets/annotations/instances_val2014.json'
+    json_file='/home/datasets/annotations/instances_val2014.json'
     with open(json_file, 'r') as COCO:
         js= json.loads(COCO.read())
     image_names= [None]*N
@@ -69,7 +69,7 @@ def loadvaldata():
     images= np.full((224,224,3,N),0)            
     for i in range(3):
         name=image_names[i]
-        images[:,:,:,i]= mpimg.imread('/home/stephlopez915/datasets/%s/%s'  % (sys.argv[2], name) )
+        images[:,:,:,i]= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[2], name) )
     
     X_val= images
     
