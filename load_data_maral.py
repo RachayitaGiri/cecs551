@@ -34,12 +34,14 @@ def loadtraindata():
      
     image_names= [None]*N
     for i in range(N):
+        print(i)
         for j in range(len(js['images'])):
             if labels[i,0]== js['images'][j]['id']:
                 image_names[i]= js['images'][j]['file_name']
                 
-    images= np.full((224,224,3,N),0)            
+    images= np.full([224,224,3,N],0, dtype= int)            
     for i in range(N):
+        print(i)
         name=image_names[i]
         images[:,:,:,i]= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[1], name) )
     
@@ -62,11 +64,12 @@ def loadvaldata():
         js= json.loads(COCO.read())
     image_names= [None]*N
     for i in range(N):
+        print(i)
         for j in range(len(js['images'])):
             if labels[i,0]== js['images'][j]['id']:
                 image_names[i]= js['images'][j]['file_name']
                 
-    images= np.full((224,224,3,N),0)            
+    images= np.full([224,224,3,N],0, dtype= int)            
     for i in range(3):
         name=image_names[i]
         images[:,:,:,i]= mpimg.imread('/home/datasets/%s/%s'  % (sys.argv[2], name) )
