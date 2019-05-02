@@ -88,32 +88,34 @@ beta1= random.uniform(0.85, 0.95)
 beta2= random.uniform(0.95, 0,9999)
 decay= 10 ** random.uniform(-6,-2)
 '''
-for i in range(3):
-    k= random.uniform(1,9)
-    
-    lr_rate= k* 10 ** (-4)
-    print('Lr rate is :', lr_rate)
-    
-    model.compile(loss=keras.losses.binary_crossentropy,
+
+def Tune_Learning_rate():
+    epochs=1
+    for i in range(100):
+        k= random.uniform(1,9)
+        lr_rate= k* 10 ** (-4)
+        print('Lr rate is :', lr_rate)
+        
+        model.compile(loss=keras.losses.binary_crossentropy,
               optimizer=Adam(lr=lr_rate, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0001, amsgrad=False),
               metrics=['accuracy'])
-    ## Training & fit
-    history= model.fit(X_train, y_train,
-          batch_size=batch_size,
-          epochs=epochs,
-          verbose=1,
-          validation_data=(X_val, y_val))
-    
-    pred = model.predict(X_val)
-    pred[pred >= 0.5]=1
-    pred[pred<0.5]=0
-    
-    
-    score= f1_score(y_val, pred, average= 'samples')
-    print('Test accuracy:', score)
-    pred = tf.convert_to_tensor(pred, np.float64)
-    loss =keras.losses.binary_crossentropy(y_val, pred)
-    print('Test loss:', loss)
+        ## Training & fit
+        history= model.fit(X_train, y_train,
+                           batch_size=batch_size,
+                           epochs=epochs,
+                           verbose=1,
+                           validation_data=(X_val, y_val))
+        
+        pred = model.predict(X_val)
+        pred[pred >= 0.5]=1
+        pred[pred<0.5]=0
+        
+        score= f1_score(y_val, pred, average= 'samples')
+        print('Test accuracy:', score)
+        pred = tf.convert_to_tensor(pred, np.float64)
+        loss =keras.losses.binary_crossentropy(y_val, pred)
+        print('Test loss:', loss)
+        
     
     
 
