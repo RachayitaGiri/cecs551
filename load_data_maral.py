@@ -25,7 +25,7 @@ def loadtraindata():
     
     N= np.shape(labels)[0]
     print(N)
-    
+    N=10000
     json_file='/home/datasets/annotations/instances_train2014.json'
     with open(json_file, 'r') as COCO:
         js= json.loads(COCO.read())
@@ -93,7 +93,7 @@ np.save("train_datay", y_train)
 print(type(X_train) , 'is type and the shape of the train images is:', np.shape(y_train))
 print(type(y_train), 'is type and the shape of the train labels is:' ,np.shape(X_train))
 
-
+'''
 X_val, y_val= loadvaldata()
 
 np.save("val_datay", y_val)
@@ -102,4 +102,4 @@ np.save("val_dataX", X_val)
 print(type(X_val) , 'is type and the shape of the val images is:', np.shape(y_val))
 print(type(y_val), 'is type and the shape of the val labels is:' ,np.shape(X_val))
 
-
+'''
