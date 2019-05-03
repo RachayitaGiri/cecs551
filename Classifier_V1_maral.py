@@ -32,11 +32,11 @@ loc_image='/home/cecs551/img2array.csv'
 loc_image2= '/home/cecs551/img2array_pt2.csv'
 y_train1= genfromtxt(loc_label, delimiter=',')
 X_train1= genfromtxt(loc_image, delimiter=',')
-X_train2= genfromtxt(loc_image2, delimiter=',')
+#X_train2= genfromtxt(loc_image2, delimiter=',')
 
 print(type(X_train1) , 'is type and the shape of the images is:', np.shape(X_train1))
 print(type(X_train2) , 'is type and the shape of the images is:', np.shape(X_train2))
-print(type(y_train1), 'is type and the shape of the labels is:' ,np.shape(y_train1))
+Rprint(type(y_train1), 'is type and the shape of the labels is:' ,np.shape(y_train1))
 
 '''
 
