@@ -23,16 +23,22 @@ from keras.utils import np_utils
 import random
 from sklearn.metrics import f1_score
 import tensorflow as tf
+from numpy import genfromtxt
 ## MyCode 
 
 ## Import labesl
+loc_label= '/home/cecs551/annotations/val_labels.csv'
+loc_image='/home/cecs551/img2array.csv'
+loc_image2= '/home/cecs551/img2array_pt2.csv'
+y_train1= genfromtxt(loc_label, delimiter=',')
+X_train1= genfromtxt(loc_image1, delimiter=',')
+X_train2= genfromtxt(loc_image2, delimiter=',')
 
-y_train1= np.load('train_datay.npy')
-X_train1= np.load('train_dataX.npy')
+print(type(X_train1) , 'is type and the shape of the images is:', np.shape(X_train1))
+print(type(X_train2) , 'is type and the shape of the images is:', np.shape(X_train2))
+print(type(y_train1), 'is type and the shape of the labels is:' ,np.shape(y_train1))
 
-
-
-
+'''
 
 y_train= y_train1[0:4000,:]
 y_val= y_train1[4000:5000,:]
@@ -82,12 +88,37 @@ model.add(Dense(classes, activation='sigmoid'))
 model.summary()
 
 
-### Try optimizers
-'''
-beta1= random.uniform(0.85, 0.95)
-beta2= random.uniform(0.95, 0,9999)
-decay= 10 ** random.uniform(-6,-2)
-'''
+### Hyper parameter tuning
+
+
+def Tune_optimizer_param():
+    for i in range(100):
+        beta1= random.uniform(0.85, 0.95)
+        beta2= random.uniform(0.95, 0,9999)
+        decay= 10 ** random.uniform(-6,-2)
+        lr_rate= 0.0001
+        model.compile(loss=keras.losses.binary_crossentropy,
+                      optimizer=Adam(lr=lr_rate, beta_1=beta1, beta_2=beta2, epsilon=None, decay=decay, amsgrad=False),
+                      metrics=['accuracy'])
+        history= model.fit(X_train, y_train,
+                           batch_size=batch_size,
+                           epochs=epochs,
+                           verbose=1,
+                           validation_data=(X_val, y_val))
+        
+        pred = model.predict(X_val)
+        pred[pred >= 0.5]=1
+        pred[pred<0.5]=0
+        print('beta1, beta2, and decay are', beta1 , beta2, decay)
+        score= f1_score(y_val, pred, average= 'samples')
+        print('Test accuracy:', score)
+        pred = tf.convert_to_tensor(pred, np.float64)
+        loss =keras.losses.binary_crossentropy(y_val, pred)
+        print('Test loss:', loss)
+        return history
+        
+    
+
 
 def Tune_Learning_rate():
     epochs=1
@@ -115,6 +146,7 @@ def Tune_Learning_rate():
         pred = tf.convert_to_tensor(pred, np.float64)
         loss =keras.losses.binary_crossentropy(y_val, pred)
         print('Test loss:', loss)
+        return history
         
     
     
@@ -143,3 +175,4 @@ def plot_loss_accuracy(history):
 
 
 plot_loss_accuracy(history)
+'''
