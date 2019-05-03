@@ -31,7 +31,7 @@ loc_label= '/home/cecs551/annotations/val_labels.csv'
 loc_image='/home/cecs551/img2array.csv'
 loc_image2= '/home/cecs551/img2array_pt2.csv'
 y_train1= genfromtxt(loc_label, delimiter=',')
-X_train1= genfromtxt(loc_image1, delimiter=',')
+X_train1= genfromtxt(loc_image, delimiter=',')
 X_train2= genfromtxt(loc_image2, delimiter=',')
 
 print(type(X_train1) , 'is type and the shape of the images is:', np.shape(X_train1))
