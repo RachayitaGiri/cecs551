@@ -20,7 +20,7 @@ x_train, x_test, y_train, y_test = load_data_subset()
 vggModel = Sequential()
 
 # Convolution with 64 filters of size 3x3
-vggModel.add(ZeroPadding2D((1,1)))
+# vggModel.add(ZeroPadding2D((1,1)))
 vggModel.add(Conv2D(64, (3,3), strides = (1,1), activation = 'relu', input_shape=(224,224,3)))
 
 vggModel.add(ZeroPadding2D((1,1)))
@@ -104,8 +104,7 @@ vggModel.compile(
 # use tensorboard to visualize our models
 #tensorboard = TensorBoard(log_dir="logs/{}".format(time()))
 
-mystr = vggModel.summary()
-
+vggModel.summary()
 vggModel.summary(print_fn=lambda x: resfile.write(x + '\n'))
 
 # Train the model for the given number of epochs
