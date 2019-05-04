@@ -1,4 +1,5 @@
 from __future__ import print_function
+from scripts.coco_dataset import *
 import sys
 sys.path.append('../')
 from sklearn.metrics import confusion_matrix
