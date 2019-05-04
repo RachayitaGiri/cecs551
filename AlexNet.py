@@ -8,22 +8,22 @@ from keras.optimizers import Adam
 from keras.callbacks import TensorBoard
 import matplotlib.pyplot as plt
 from statistics import mean
-from scripts.coco_dataset import load_data
+from scripts.coco_dataset import load_data_subset
 import time
 
 
-##call load_data
+##call load data
 
-x_train, x_test, y_train, y_test = load_data()
+x_train, x_test, y_train, y_test = load_data_subset()
 
 ## Params
-classes= 91
-power= random.uniform(-6,-2)
-lr_rate= 10 ** power
-batch_size= 128
-epochs= 5
-input_shape= 224, 224, 3
-print('Lr rate is :', lr_rate)
+#classes= 91
+#power= random.uniform(-6,-2)
+#lr_rate= 10 ** power
+#batch_size= 128
+#epochs= 5
+#input_shape= 224, 224, 3
+#print('Lr rate is :', lr_rate)
 
 # CNN using Keras' Sequential capabilities
 
@@ -32,7 +32,7 @@ model_alexnet = Sequential()
 
 ##1.  11x11 convolution with 4x4 stride and 96 filters
 model_alexnet.add(Conv2D(96, (11, 11), strides = (4,4),
-                 input_shape=x_train.shape[1:]))
+                 input_shape=(224,224,3)))
 model_alexnet.add(Activation('relu'))
 
 model_alexnet.add(MaxPooling2D(pool_size=(3, 3), strides=(2,2)))
@@ -84,7 +84,7 @@ resfile.write("\n- - - - - - - - - - - - \nAlexNet MODEL EXECUTION DETAILS |\n- 
 # Compile the model
 model_alexnet.compile(
     loss='categorical_crossentropy',
-    optimizer = Adam(lr=1e-4),
+    optimizer = Adam(lr_rate=1e-4),
     metrics=["accuracy"]
 )
 
