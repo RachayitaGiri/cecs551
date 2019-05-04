@@ -1,7 +1,7 @@
 from __future__ import print_function
-from scripts.coco_dataset import *
 import sys
 sys.path.append('../')
+from scripts.coco_dataset import *
 from sklearn.metrics import confusion_matrix
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D, BatchNormalization
