@@ -88,7 +88,7 @@ vggModel.add(Dense(4096, activation = 'relu'))
 vggModel.add(Dropout(0.5))
 
 # Need FC Layer (1 for each class)
-vggModel.add(Dense(91), activation = 'sigmoid')
+vggModel.add(Dense(91, activation = 'sigmoid'))
 
 # Open the file to which the output will be written
 resfile = open("../outputs/VGG_output_test.txt","a")
@@ -127,6 +127,10 @@ val_loss = history.history['val_loss']
 acc = history.history['acc']
 val_acc = history.history['val_acc']
 
+resfile.write("\nTraining Losses:\n" + loss)
+resfile.write("\nTraining Accuracies:\n" + acc)
+resfile.write("\nValidation Losses:\n" + val_loss)
+resfile.write("\nValidation Accuracies:\n" + val_acc)
 resfile.write("\nMean Training Loss = "+str(mean(loss)))
 resfile.write("\nMean Validation Loss = "+str(mean(val_loss)))
 resfile.write("\nMean Training Accuracy = "+str(mean(acc)))
@@ -134,7 +138,7 @@ resfile.write("\nMean Validation Accuracy = "+str(mean(val_acc)))
 resfile.write("\nNumber of epochs, steps per epoch = "+str(len(loss))+", 10")
 resfile.write("\nTime taken = %s seconds" % duration)    
 resfile.write("\nLearning Rate = 1e-4")
-resfile.write("\nOptimizer = Adam\n")   
+resfile.write("\nOptimizer = Adam\n")    
 
 """ # Evaluate the losses of the model 
 epochs = range(1, len(loss)+1)
