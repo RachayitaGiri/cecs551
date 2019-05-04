@@ -18,9 +18,22 @@ def load_data():
     '''
     labels = pd.read_csv('/home/datasets/annotations/val_labels.csv', delimiter=',')
     X = pd.read_csv('/home/datasets/img2array.csv', delimiter=',')
-    y = labels[:, 1:]
+    y = labels.iloc[:, 1:]
 
+    # Split the dataset into train and test values
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+    # Reshape the data subsets into dimensions apt for the CNN, if need be
+    X_train = X_train.values
+    X_test = X_test.values
+    y_train = y_train.values
+    y_test = y_test.values 
+    
+    # Print the shape of the datasets
+    print("Shape of X_train: ", X_train.shape)
+    print("Shape of y_train: ", y_train.shape)
+    print("Shape of X_test: ", X_test.shape)
+    print("Shape of y_test: ", y_test.shape)
 
     return (X_train, X_test, y_train, y_test)
 
