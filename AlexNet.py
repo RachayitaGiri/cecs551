@@ -38,7 +38,7 @@ model_alexnet.add(MaxPooling2D(pool_size=(3, 3), strides=(2,2)))
 
 ##2.  5x5 convolution with 1x1 stride and 256 filters
 model_alexnet.add(ZeroPadding2D((2,2)))
-model_alexnet.add(Conv2D(256, (5, 5), strides = (1,1)), padding=2, activation = 'relu')
+model_alexnet.add(Conv2D(256, (5, 5), strides = (1,1), padding=2, activation = 'relu'))
 
 model_alexnet.add(MaxPooling2D(pool_size=(3, 3), strides=(2,2)))
 
@@ -107,6 +107,10 @@ val_loss = history.history['val_loss']
 acc = history.history['acc']
 val_acc = history.history['val_acc']
 
+resfile.write("\nTraining Losses:\n" + loss)
+resfile.write("\nTraining Accuracies:\n" + acc)
+resfile.write("\nValidation Losses:\n" + val_loss)
+resfile.write("\nValidation Accuracies:\n" + val_acc)
 resfile.write("\nMean Training Loss = "+str(mean(loss)))
 resfile.write("\nMean Validation Loss = "+str(mean(val_loss)))
 resfile.write("\nMean Training Accuracy = "+str(mean(acc)))
