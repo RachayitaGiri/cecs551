@@ -7,21 +7,21 @@ from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D, BatchNormal
 from keras.optimizers import Adam
 import matplotlib.pyplot as plt
 from statistics import mean
-from scripts.coco_dataset import load_data
+from scripts.coco_dataset import load_data_subset
 import time
 
 from keras.callbacks import TensorBoard
 
 start = time.time() 
 
-x_train, x_test, y_train, y_test = load_data()
+x_train, x_test, y_train, y_test = load_data_subset()
 
 # VGGNet 16 Layer Implementation
 vggModel = Sequential()
 
 # Convolution with 64 filters of size 3x3
 vggModel.add(ZeroPadding2D((1,1)))
-vggModel.add(Conv2D(64, (3,3), strides = (1,1), input_shape=x_train.shape[1:]))
+vggModel.add(Conv2D(64, (3,3), strides = (1,1), input_shape=(224,224,3)))
 vggModel.add(Activation('relu'))
 
 vggModel.add(ZeroPadding2D((1,1)))
