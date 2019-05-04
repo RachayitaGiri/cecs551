@@ -69,6 +69,10 @@ val_loss = history.history['val_loss']
 acc = history.history['acc']
 val_acc = history.history['val_acc']
 
+resfile.write("\nTraining Losses:\n" + loss)
+resfile.write("\nTraining Accuracies:\n" + acc)
+resfile.write("\nValidation Losses:\n" + val_loss)
+resfile.write("\nValidation Accuracies:\n" + val_acc)
 resfile.write("\nMean Training Loss = "+str(mean(loss)))
 resfile.write("\nMean Validation Loss = "+str(mean(val_loss)))
 resfile.write("\nMean Training Accuracy = "+str(mean(acc)))

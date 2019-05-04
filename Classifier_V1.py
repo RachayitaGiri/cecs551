@@ -1,58 +1,26 @@
 from __future__ import print_function
-
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Apr 10 16:08:06 2019
-
-@author: surface
-"""
-## ImageClassification
-# COCO Dataset spring 2019
-# Last Updated 4/22/2019
-
-import numpy as np
-import keras
+import sys
+sys.path.append('../')
+from sklearn.metrics import confusion_matrix
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten
-from keras.layers import Conv2D, MaxPooling2D
-from keras.optimizers import RMSprop, Adam
-from keras.optimizers import SGD
+from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D, BatchNormalization
+from keras.optimizers import Adam
 import matplotlib.pyplot as plt
-from keras.layers import Activation
-from keras.utils import np_utils
-import random
+from statistics import mean
+from scripts.coco_dataset import load_data
+import time
 
-import glob
-import os, sys
+start = time.time() 
 
-import progressbar as pb
+X_train, X_test, y_train, y_test = load_data()
 
-
-## MyCode 
-
-## Import Images
-image_list=[]
-
-allPictures = glob.glob('/home/datasets/%s/*.jpg' % sys.argv[1])
-##allPictures = glob.glob('/home/datasets/train2014/*.jpeg')
-
-for file in allPictures:
-    im= file.load_data()
-    image_list.append(file)
-    
     
 
-
-print('Image list length is :' , len(image_list))
-
-## Params
-classes= 91
-power= random.uniform(-6,-2)
-lr_rate= 10 ** power
-batch_size= 128
-epochs= 5
+## Model params
 input_shape= 224, 224, 3
-print('Lr rate is :', lr_rate)
+classes= 91
+batch_size= 200
+epochs=1
 
 ## model
 
@@ -64,7 +32,7 @@ model.add(Dropout(0.4))
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
 
-model.add(Conv2D(64, kernel_size=(3, 3), activation='relu'))
+model.add(Conv2D(32, kernel_size=(3, 3), activation='relu'))
 model.add(Dropout(0.4))
 
 model.add(MaxPooling2D(pool_size=(2, 2)))
@@ -80,58 +48,78 @@ model.add(Dropout(0.4))
 model.add(Flatten())
 model.add(Dense(batch_size, activation='relu'))
 model.add(Dropout(0.25))
-model.add(Dense(classes, activation='softmax'))
+model.add(Dense(classes, activation='sigmoid'))
 model.summary()
 
-'''
-### Try optimizers
+# Open the file to which the output will be written
+resfile = open("../outputs/output_test.txt","a")
+resfile.write("\n- - - - - - - - - - - - \nMODEL EXECUTION DETAILS |\n- - - - - - - - - - - -\n")
 
-model.compile(loss=keras.losses.categorical_crossentropy,
-              optimizer=RMSprop(lr=lr_rate),
-              metrics=['accuracy'])
 
-model.compile(loss=keras.losses.categorical_crossentropy,
-              optimizer=SGD(lr=lr_rate, momentum=0.9),
-              metrics=['accuracy'])
+## Params
 
-model.compile(loss=keras.losses.categorical_crossentropy,
+for i in range(2):
+    power= random.uniform(-6,-2)
+    lr_rate= 10 ** power
+    model.compile(loss=keras.losses.binary_crossentropy,
               optimizer=Adam(lr=lr_rate, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0001, amsgrad=False),
               metrics=['accuracy'])
-
-## Training & fit
-history= model.fit(x_train, y_train,
+    ## Training & fit
+    history= model.fit(X_train, y_train,
           batch_size=batch_size,
           epochs=epochs,
           verbose=1,
-          validation_data=(x_test, y_test))
-
-
-
-
-score = model.evaluate(x_test, y_test, verbose=1)
-
-print('Test loss:', score[0])
-print('Test accuracy:', score[1])
-
- 
-def plot_loss_accuracy(history):
-    fig = plt.figure(figsize=(12, 6))
-    ax = fig.add_subplot(1, 2, 1)
-    ax.plot(history.history["loss"],'r-x', label="Train Loss")
-    ax.plot(history.history["val_loss"],'b-x', label="Validation Loss")
-    ax.legend()
-    ax.set_title('cross_entropy loss')
-    ax.grid(True)
-
-
-    ax = fig.add_subplot(1, 2, 2)
-    ax.plot(history.history["acc"],'r-x', label="Train Accuracy")
-    ax.plot(history.history["val_acc"],'b-x', label="Validation Accuracy")
-    ax.legend()
-    ax.set_title('accuracy')
-    ax.grid(True)
+          validation_data=(X_test, y_test))
+    loss = history.history['loss']
+    val_loss = history.history['val_loss']
+    acc = history.history['acc']
+    val_acc = history.history['val_acc']
+    pred = model.predict(X_test)
+    pred[pred >= 0.5]=1
+    pred[pred<0.5]=0
     
+    score= f1_score(y_test, pred, average= 'samples')
+    print('Test accuracy:', score)
+    pred = tf.convert_to_tensor(pred, np.float64)
+    loss1 =keras.losses.binary_crossentropy(y_test, pred)
+    print('Test loss:', loss1)
+
+    
+        
 
 
-plot_loss_accuracy(history)
-'''
+
+
+resfile.write("\nMean Training Loss = "+str(mean(loss)))
+resfile.write("\nMean Validation Loss = "+str(mean(val_loss)))
+resfile.write("\nMean Training Accuracy = "+str(mean(acc)))
+resfile.write("\nMean Validation Accuracy = "+str(mean(val_acc)))
+resfile.write("\nNumber of epochs, steps per epoch = "+str(len(loss))+", 10")
+resfile.write("\nTime taken = %s seconds" % duration)    
+resfile.write("\nLearning Rate = 1e-4")
+resfile.write("\nOptimizer = Adam\n")   
+
+""" # Evaluate the losses of the model 
+epochs = range(1, len(loss)+1)
+plt.plot(epochs, loss, color='red', label='Training Loss')
+plt.plot(epochs, val_loss, color='blue', label='Validation Loss')
+plt.title('Training and Validation Loss')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
+# Evaluate the accuracy of the model
+plt.plot(epochs, acc, color='red', label='Training acc')
+plt.plot(epochs, val_acc, color='green', label='Validation acc')
+plt.title('Training and validation accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('Loss')
+plt.legend()
+plt.show()
+ """
+        
+
+
+
+
+
