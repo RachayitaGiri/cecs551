@@ -3,7 +3,7 @@ import sys
 sys.path.append('../')
 from sklearn.metrics import confusion_matrix
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D, BatchNormalization, ZeroPadding2D
+from keras.layers import Dense, Dropout, Flatten, Conv2D, BatchNormalization, ZeroPadding2D, MaxPooling2D
 from keras.optimizers import Adam
 import matplotlib.pyplot as plt
 from statistics import mean
@@ -88,11 +88,7 @@ vggModel.add(Dense(4096, activation = 'relu'))
 vggModel.add(Dropout(0.5))
 
 # Need FC Layer (1 for each class)
-vggModel.add(Dense(91))
-
-# change loss function?
-vggModel.add(Dense(1000))
-vggModel.add(Activation('sigmoid'))
+vggModel.add(Dense(91), activation = 'sigmoid')
 
 # Open the file to which the output will be written
 resfile = open("../outputs/VGG_output_test.txt","a")
