@@ -8,6 +8,7 @@ from keras.optimizers import Adam
 import matplotlib.pyplot as plt
 from statistics import mean
 from scripts.coco_dataset import load_data
+from scripts.coco_dataset import load_data_subset
 import time
 
 start = time.time() 
