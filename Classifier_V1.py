@@ -5,11 +5,11 @@ from scripts.coco_dataset import *
 from sklearn.metrics import confusion_matrix
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D, BatchNormalization
+import random
 from keras.optimizers import Adam
 import matplotlib.pyplot as plt
 from statistics import mean
 from keras.utils import np_utils
-import random
 from sklearn.metrics import f1_score
 import tensorflow as tf
 import time
