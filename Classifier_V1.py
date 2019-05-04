@@ -23,7 +23,7 @@ from keras.utils import np_utils
 import random
 
 import glob
-import os, sys
+import sys
 
 import progressbar as pb
 
