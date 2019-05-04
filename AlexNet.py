@@ -3,7 +3,7 @@ import sys
 sys.path.append('../')
 from sklearn.metrics import confusion_matrix
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D, BatchNormalization, ZeroPadding2D
+from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPooling2D, BatchNormalization, ZeroPadding2D
 from keras.optimizers import Adam
 from keras.callbacks import TensorBoard
 import matplotlib.pyplot as plt
@@ -67,8 +67,7 @@ model_alexnet.add(Dense(4096, activation = 'relu'))
 model_alexnet.add(Dropout(0.5))
 
 #8.  number of classes
-model_alexnet.add(Dense(91))
-model_alexnet.add(Activation('sigmoid'))
+model_alexnet.add(Dense(91, activation = 'sigmoid'))
 
 # Open the file to which the output will be written
 resfile = open("../outputs/alexnet_output_test.txt","a")
