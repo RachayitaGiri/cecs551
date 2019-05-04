@@ -11,11 +11,11 @@ from statistics import mean
 import time
 
 start = time.time() 
-
+'''
 #X_train, X_test, y_train, y_test = load_data()
 X_train, X_test, y_train, y_test = load_data_subset()
 
-    
+'''   
 
 ## Model params
 input_shape= 224, 224, 3
@@ -30,18 +30,18 @@ model = Sequential()
 model.add(Conv2D(32, kernel_size=(3, 3), strides= 1 ,padding= 'same', activation='relu', input_shape=input_shape))
 model.add(Dropout(0.4))
 
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(MaxPool2D(pool_size=(2, 2)))
 
 
 model.add(Conv2D(32, kernel_size=(3, 3), activation='relu'))
 model.add(Dropout(0.4))
 
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(MaxPool2D(pool_size=(2, 2)))
 
 model.add(Conv2D(32, kernel_size=(3, 3), activation='relu'))
 model.add(Dropout(0.4))
 
-model.add(MaxPooling2D(pool_size=(2, 2)))
+model.add(MaxPool2D(pool_size=(2, 2)))
 
 model.add(Conv2D(20, kernel_size=(3, 3), activation='relu'))
 model.add(Dropout(0.4))
