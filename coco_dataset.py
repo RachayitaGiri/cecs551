@@ -50,5 +50,11 @@ def load_data_subset():
     X_test = X_test.values
     y_train = y_train.values
     y_test = y_test.values 
+    
+    # Print the shape of the datasets
+    print("Shape of X_train: ", X_train.shape)
+    print("Shape of y_train: ", y_train.shape)
+    print("Shape of X_test: ", X_test.shape)
+    print("Shape of y_test: ", y_test.shape)
 
     return (X_train, X_test, y_train, y_test)
