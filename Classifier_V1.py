@@ -8,6 +8,10 @@ from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D, BatchNormal
 from keras.optimizers import Adam
 import matplotlib.pyplot as plt
 from statistics import mean
+from keras.utils import np_utils
+import random
+from sklearn.metrics import f1_score
+import tensorflow as tf
 import time
 
 start = time.time() 
