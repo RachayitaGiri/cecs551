@@ -85,7 +85,7 @@ model_alexnet.summary(print_fn=lambda x: resfile.write(x + '\n'))
 
 
 # Train the model for the given number of epochs
-history = model.fit(
+history = model_alexnet.fit(
     x_train, y_train,
     steps_per_epoch=10,
     epochs=2,
