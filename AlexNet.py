@@ -39,7 +39,7 @@ model_alexnet.add(MaxPooling2D(pool_size=(3, 3), strides=(2,2)))
 
 ##2.  5x5 convolution with 1x1 stride and 256 filters
 model_alexnet.add(ZeroPadding2D((2,2)))
-model_alexnet.add(Conv2D(256, (5, 5), strides = (1,1))), padding=2
+model_alexnet.add(Conv2D(256, (5, 5), strides = (1,1)), padding=2)
 model_alexnet.add(Activation('relu'))
 
 model_alexnet.add(MaxPooling2D(pool_size=(3, 3), strides=(2,2)))
