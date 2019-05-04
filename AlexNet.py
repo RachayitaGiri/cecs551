@@ -76,7 +76,7 @@ resfile.write("\n- - - - - - - - - - - - \nAlexNet MODEL EXECUTION DETAILS |\n- 
 # Compile the model
 model_alexnet.compile(
     loss='categorical_crossentropy',
-    optimizer = Adam(lr_rate=1e-4),
+    optimizer = Adam(lr=1e-4),
     metrics=["accuracy"]
 )
 
