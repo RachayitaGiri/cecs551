@@ -24,8 +24,8 @@ def load_data():
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
     # Reshape the data subsets into dimensions apt for the CNN, if need be
-    X_train = X_train.values
-    X_test = X_test.values
+    X_train = X_train.values.reshape(-1, 224, 224, 3).astype(int)
+    X_test = X_test.values.reshape(-1, 224, 224, 3).astype(int)
     y_train = y_train.values
     y_test = y_test.values 
     
@@ -59,8 +59,8 @@ def load_data_subset():
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
     # Reshape the data subsets into dimensions apt for the CNN, if need be
-    X_train = X_train.values
-    X_test = X_test.values
+    X_train = X_train.values.reshape(-1, 224, 224, 3).astype(int)
+    X_test = X_test.values.reshape(-1, 224, 224, 3).astype(int)
     y_train = y_train.values
     y_test = y_test.values 
     
