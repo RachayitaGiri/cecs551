@@ -27,6 +27,11 @@ from numpy import genfromtxt
 ## MyCode 
 
 ## Import labesl
+
+
+
+from scripts.coco_dataset import *
+'''
 loc_label= '/home/cecs551/annotations/val_labels.csv'
 loc_image='/home/cecs551/img2array.csv'
 loc_image2= '/home/cecs551/img2array_pt2.csv'
@@ -35,16 +40,12 @@ X_train1= genfromtxt(loc_image, delimiter=',')
 #X_train2= genfromtxt(loc_image2, delimiter=',')
 
 print(type(X_train1) , 'is type and the shape of the images is:', np.shape(X_train1))
-print(type(X_train2) , 'is type and the shape of the images is:', np.shape(X_train2))
-Rprint(type(y_train1), 'is type and the shape of the labels is:' ,np.shape(y_train1))
-
+#print(type(X_train2) , 'is type and the shape of the images is:', np.shape(X_train2))
+print(type(y_train1), 'is type and the shape of the labels is:' ,np.shape(y_train1))
 '''
 
-y_train= y_train1[0:4000,:]
-y_val= y_train1[4000:5000,:]
 
-X_train=np.reshape(X_train1[:,:,:,0:4000], [4000,224,224,3])
-X_val= np.reshape(X_train1[:,:,:,4000:], [1000,224,224,3])
+
 
 
 print(type(X_train) , 'is type and the shape of the images is:', np.shape(X_train))
@@ -92,7 +93,7 @@ model.summary()
 
 
 def Tune_optimizer_param():
-    for i in range(100):
+    for i in range(1):
         beta1= random.uniform(0.85, 0.95)
         beta2= random.uniform(0.95, 0,9999)
         decay= 10 ** random.uniform(-6,-2)
@@ -118,7 +119,7 @@ def Tune_optimizer_param():
         return history
         
     
-
+'''
 
 def Tune_Learning_rate():
     epochs=1
