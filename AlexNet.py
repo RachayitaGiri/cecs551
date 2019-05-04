@@ -3,7 +3,7 @@ import sys
 sys.path.append('../')
 from sklearn.metrics import confusion_matrix
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D, BatchNormalization
+from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D, BatchNormalization, ZeroPadding2D
 from keras.optimizers import Adam
 from keras.callbacks import TensorBoard
 import matplotlib.pyplot as plt
