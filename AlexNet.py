@@ -110,10 +110,10 @@ history = model.fit(
 #model.fit(x_train, y_train, verbose=1, callbacks=[tensorboard])
 
 # Write the results to a file
-loss = history.history['alexnet_loss']
-val_loss = history.history['alexnet_val_loss']
-acc = history.history['alexnet_acc']
-val_acc = history.history['alexnet_val_acc']
+loss = history.history['loss']
+val_loss = history.history['val_loss']
+acc = history.history['acc']
+val_acc = history.history['val_acc']
 
 resfile.write("\nMean Training Loss = "+str(mean(loss)))
 resfile.write("\nMean Validation Loss = "+str(mean(val_loss)))
