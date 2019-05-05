@@ -97,7 +97,7 @@ for i in range(1):
 
     
         
-
+duration= time.time()-start
 
 resfile.write("\nTraining Losses:\n" + str(loss))
 resfile.write("\nTraining Accuracies:\n" + str(acc))
