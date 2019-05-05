@@ -64,8 +64,8 @@ resfile.write("\n- - - - - - - - - - - - \nMODEL EXECUTION DETAILS |\n- - - - - 
 
 ## Params
 
-for i in range(1):
-    power= random.uniform(-6,-2)
+for i in range(50):
+    power= random.uniform(-5,-3)
     lr_rate= 10 ** power
     lr_rate= 0.0002
     print('learning rate is :' , lr_rate)
