@@ -16,11 +16,11 @@ import tensorflow as tf
 import time
 
 start = time.time() 
-'''
+
 #X_train, X_test, y_train, y_test = load_data()
 X_train, X_test, y_train, y_test = load_data_subset()
 
-'''   
+  
 
 ## Model params
 input_shape= 224, 224, 3
@@ -94,7 +94,7 @@ for i in range(2):
         
 
 
-
+'''
 
 resfile.write("\nMean Training Loss = "+str(mean(loss)))
 resfile.write("\nMean Validation Loss = "+str(mean(val_loss)))
@@ -104,7 +104,7 @@ resfile.write("\nNumber of epochs, steps per epoch = "+str(len(loss))+", 10")
 resfile.write("\nTime taken = %s seconds" % duration)    
 resfile.write("\nLearning Rate = 1e-4")
 resfile.write("\nOptimizer = Adam\n")   
-
+'''
 """ # Evaluate the losses of the model 
 epochs = range(1, len(loss)+1)
 plt.plot(epochs, loss, color='red', label='Training Loss')
