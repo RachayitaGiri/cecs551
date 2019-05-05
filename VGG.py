@@ -7,14 +7,14 @@ from keras.layers import Dense, Dropout, Flatten, Conv2D, BatchNormalization, Ze
 from keras.optimizers import Adam
 import matplotlib.pyplot as plt
 from statistics import mean
-from scripts.coco_dataset import load_data_subset
+from scripts.coco_dataset import *
 import time
 
 from keras.callbacks import TensorBoard
 
 start = time.time() 
 
-x_train, x_test, y_train, y_test = load_data_subset()
+x_train, x_test, y_train, y_test = load_data()
 
 # VGGNet 16 Layer Implementation
 vggModel = Sequential()
@@ -112,7 +112,7 @@ vggModel.summary(print_fn=lambda x: resfile.write(x + '\n'))
 history = vggModel.fit(
     x_train, y_train,
     steps_per_epoch=10,
-    epochs=2,
+    epochs=10,
     verbose=1,
     validation_data=(x_test, y_test),
     validation_steps=10,
