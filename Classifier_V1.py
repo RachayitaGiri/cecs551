@@ -17,8 +17,8 @@ import time
 
 start = time.time() 
 
-#X_train, X_test, y_train, y_test = load_data()
-X_train, X_test, y_train, y_test = load_data_subset(200)
+X_train, X_test, y_train, y_test = load_data()
+#X_train, X_test, y_train, y_test = load_data_subset(200)
 
   
 
