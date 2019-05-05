@@ -56,17 +56,18 @@ model.add(Dense(batch_size, activation='relu'))
 model.add(Dropout(0.25))
 model.add(Dense(classes, activation='sigmoid'))
 model.summary()
-
+'''
 # Open the file to which the output will be written
 resfile = open("../outputs/output_test.txt","a")
 resfile.write("\n- - - - - - - - - - - - \nMODEL EXECUTION DETAILS |\n- - - - - - - - - - - -\n")
-
+'''
 
 ## Params
 
 for i in range(2):
     power= random.uniform(-6,-2)
     lr_rate= 10 ** power
+    print('learning rate is :' , lr_rate)
     model.compile(loss=keras.losses.binary_crossentropy,
               optimizer=Adam(lr=lr_rate, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0001, amsgrad=False),
               metrics=['accuracy'])
@@ -84,11 +85,14 @@ for i in range(2):
     pred[pred >= 0.5]=1
     pred[pred<0.5]=0
     
+  
     score= f1_score(y_test, pred, average= 'samples')
     print('Test accuracy:', score)
+    '''
     pred = tf.convert_to_tensor(pred, np.float64)
     loss1 =keras.losses.binary_crossentropy(y_test, pred)
     print('Test loss:', loss1)
+    '''
 
     
         
