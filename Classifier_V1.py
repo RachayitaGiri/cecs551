@@ -26,7 +26,7 @@ X_train, X_test, y_train, y_test = load_data()
 input_shape= 224, 224, 3
 classes= 91
 batch_size= 200
-epochs=1
+epochs=25
 
 ## model
 
@@ -64,9 +64,9 @@ resfile.write("\n- - - - - - - - - - - - \nMODEL EXECUTION DETAILS |\n- - - - - 
 
 ## Params
 
-for i in range(50):
-    power= random.uniform(-5,-3)
-    lr_rate= 10 ** power
+for i in range(1):
+    #power= random.uniform(-5,-3)
+    #lr_rate= 10 ** power
     lr_rate= 0.0002
     print('learning rate is :' , lr_rate)
     model.compile(loss=keras.losses.binary_crossentropy,
