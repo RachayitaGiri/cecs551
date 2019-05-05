@@ -1,11 +1,14 @@
 # This fine-tuning code was taken from Keras documentation and modified slightly to have only
 # 91 dense neurons for the COCO dataset
-
+from __future__ import print_function
+import sys
+sys.path.append('../')
 from keras.applications import VGG16
 from keras.preprocessing.image import ImageDataGenerator
 from keras import optimizers
 from keras.models import Sequential, Model
 from keras.layers import Dropout, Flatten, Dense, Input
+from scripts.coco_dataset import *
 import pprint
 
 # dimensions of our images.
