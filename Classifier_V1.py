@@ -56,17 +56,18 @@ model.add(Dense(batch_size, activation='relu'))
 model.add(Dropout(0.25))
 model.add(Dense(classes, activation='sigmoid'))
 model.summary()
-'''
+
 # Open the file to which the output will be written
-resfile = open("../outputs/output_test.txt","a")
+resfile = open("../outputs/output_test1.txt","a")
 resfile.write("\n- - - - - - - - - - - - \nMODEL EXECUTION DETAILS |\n- - - - - - - - - - - -\n")
-'''
+
 
 ## Params
 
-for i in range(2):
+for i in range(1):
     power= random.uniform(-6,-2)
     lr_rate= 10 ** power
+    lr_rate= 0.0002
     print('learning rate is :' , lr_rate)
     model.compile(loss=keras.losses.binary_crossentropy,
               optimizer=Adam(lr=lr_rate, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0001, amsgrad=False),
@@ -98,8 +99,10 @@ for i in range(2):
         
 
 
-'''
-
+resfile.write("\nTraining Losses:\n" + loss)
+resfile.write("\nTraining Accuracies:\n" + acc)
+resfile.write("\nValidation Losses:\n" + val_loss)
+resfile.write("\nValidation Accuracies:\n" + val_acc)
 resfile.write("\nMean Training Loss = "+str(mean(loss)))
 resfile.write("\nMean Validation Loss = "+str(mean(val_loss)))
 resfile.write("\nMean Training Accuracy = "+str(mean(acc)))
@@ -108,8 +111,8 @@ resfile.write("\nNumber of epochs, steps per epoch = "+str(len(loss))+", 10")
 resfile.write("\nTime taken = %s seconds" % duration)    
 resfile.write("\nLearning Rate = 1e-4")
 resfile.write("\nOptimizer = Adam\n")   
-'''
-""" # Evaluate the losses of the model 
+
+# Evaluate the losses of the model 
 epochs = range(1, len(loss)+1)
 plt.plot(epochs, loss, color='red', label='Training Loss')
 plt.plot(epochs, val_loss, color='blue', label='Validation Loss')
@@ -126,7 +129,7 @@ plt.xlabel('Epochs')
 plt.ylabel('Loss')
 plt.legend()
 plt.show()
- """
+ 
         
 
 
