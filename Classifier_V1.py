@@ -3,10 +3,10 @@ import sys
 sys.path.append('../')
 from scripts.coco_dataset import *
 from sklearn.metrics import confusion_matrix
-import keras
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Flatten, Conv2D, MaxPool2D, BatchNormalization
 import random
+import keras
 from keras.optimizers import Adam
 import matplotlib.pyplot as plt
 from statistics import mean
@@ -16,11 +16,11 @@ import tensorflow as tf
 import time
 
 start = time.time() 
-'''
-#X_train, X_test, y_train, y_test = load_data()
-X_train, X_test, y_train, y_test = load_data_subset()
 
-'''   
+X_train, X_test, y_train, y_test = load_data()
+#X_train, X_test, y_train, y_test = load_data_subset(200)
+
+  
 
 ## Model params
 input_shape= 224, 224, 3
@@ -58,15 +58,17 @@ model.add(Dense(classes, activation='sigmoid'))
 model.summary()
 
 # Open the file to which the output will be written
-resfile = open("../outputs/output_test.txt","a")
+resfile = open("../outputs/output_test1.txt","a")
 resfile.write("\n- - - - - - - - - - - - \nMODEL EXECUTION DETAILS |\n- - - - - - - - - - - -\n")
 
 
 ## Params
 
-for i in range(2):
-    power= random.uniform(-6,-2)
+for i in range(50):
+    power= random.uniform(-5,-3)
     lr_rate= 10 ** power
+    lr_rate= 0.0002
+    print('learning rate is :' , lr_rate)
     model.compile(loss=keras.losses.binary_crossentropy,
               optimizer=Adam(lr=lr_rate, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0001, amsgrad=False),
               metrics=['accuracy'])
@@ -84,18 +86,23 @@ for i in range(2):
     pred[pred >= 0.5]=1
     pred[pred<0.5]=0
     
+  
     score= f1_score(y_test, pred, average= 'samples')
     print('Test accuracy:', score)
+    '''
     pred = tf.convert_to_tensor(pred, np.float64)
     loss1 =keras.losses.binary_crossentropy(y_test, pred)
     print('Test loss:', loss1)
+    '''
 
     
         
+duration= time.time()-start
 
-
-
-
+resfile.write("\nTraining Losses:\n" + str(loss))
+resfile.write("\nTraining Accuracies:\n" + str(acc))
+resfile.write("\nValidation Losses:\n" + str(val_loss))
+resfile.write("\nValidation Accuracies:\n" + str(val_acc))
 resfile.write("\nMean Training Loss = "+str(mean(loss)))
 resfile.write("\nMean Validation Loss = "+str(mean(val_loss)))
 resfile.write("\nMean Training Accuracy = "+str(mean(acc)))
@@ -105,7 +112,7 @@ resfile.write("\nTime taken = %s seconds" % duration)
 resfile.write("\nLearning Rate = 1e-4")
 resfile.write("\nOptimizer = Adam\n")   
 
-""" # Evaluate the losses of the model 
+# Evaluate the losses of the model 
 epochs = range(1, len(loss)+1)
 plt.plot(epochs, loss, color='red', label='Training Loss')
 plt.plot(epochs, val_loss, color='blue', label='Validation Loss')
@@ -122,7 +129,7 @@ plt.xlabel('Epochs')
 plt.ylabel('Loss')
 plt.legend()
 plt.show()
- """
+ 
         
 
 
