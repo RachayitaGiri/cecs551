@@ -7,20 +7,20 @@ from keras.layers import Dense, Dropout, Flatten, Conv2D, BatchNormalization, Ze
 from keras.optimizers import Adam
 import matplotlib.pyplot as plt
 from statistics import mean
-from scripts.coco_dataset import load_data_subset
+from scripts.coco_dataset import *
 import time
 
 from keras.callbacks import TensorBoard
 
 start = time.time() 
 
-x_train, x_test, y_train, y_test = load_data_subset()
+x_train, x_test, y_train, y_test = load_data()
 
 # VGGNet 16 Layer Implementation
 vggModel = Sequential()
 
 # Convolution with 64 filters of size 3x3
-vggModel.add(ZeroPadding2D((1,1)))
+# vggModel.add(ZeroPadding2D((1,1)))
 vggModel.add(Conv2D(64, (3,3), strides = (1,1), activation = 'relu', input_shape=(224,224,3)))
 
 vggModel.add(ZeroPadding2D((1,1)))
@@ -88,7 +88,7 @@ vggModel.add(Dense(4096, activation = 'relu'))
 vggModel.add(Dropout(0.5))
 
 # Need FC Layer (1 for each class)
-vggModel.add(Dense(91), activation = 'sigmoid')
+vggModel.add(Dense(91, activation = 'sigmoid'))
 
 # Open the file to which the output will be written
 resfile = open("../outputs/VGG_output_test.txt","a")
@@ -100,19 +100,19 @@ vggModel.compile(
     optimizer = Adam(lr=1e-4),
     metrics=["accuracy"]
 )
+# model.save(????.h5)
 
 # use tensorboard to visualize our models
 #tensorboard = TensorBoard(log_dir="logs/{}".format(time()))
 
-mystr = vggModel.summary()
-
+vggModel.summary()
 vggModel.summary(print_fn=lambda x: resfile.write(x + '\n'))
 
 # Train the model for the given number of epochs
 history = vggModel.fit(
     x_train, y_train,
     steps_per_epoch=10,
-    epochs=2,
+    epochs=10,
     verbose=1,
     validation_data=(x_test, y_test),
     validation_steps=10,
@@ -127,6 +127,10 @@ val_loss = history.history['val_loss']
 acc = history.history['acc']
 val_acc = history.history['val_acc']
 
+resfile.write("\nTraining Losses:\n" + str(loss))
+resfile.write("\nTraining Accuracies:\n" + str(acc))
+resfile.write("\nValidation Losses:\n" + str(val_loss))
+resfile.write("\nValidation Accuracies:\n" + str(val_acc))
 resfile.write("\nMean Training Loss = "+str(mean(loss)))
 resfile.write("\nMean Validation Loss = "+str(mean(val_loss)))
 resfile.write("\nMean Training Accuracy = "+str(mean(acc)))
@@ -134,7 +138,7 @@ resfile.write("\nMean Validation Accuracy = "+str(mean(val_acc)))
 resfile.write("\nNumber of epochs, steps per epoch = "+str(len(loss))+", 10")
 resfile.write("\nTime taken = %s seconds" % duration)    
 resfile.write("\nLearning Rate = 1e-4")
-resfile.write("\nOptimizer = Adam\n")   
+resfile.write("\nOptimizer = Adam\n")    
 
 """ # Evaluate the losses of the model 
 epochs = range(1, len(loss)+1)
